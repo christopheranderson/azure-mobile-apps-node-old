@@ -1,0 +1,14 @@
+{
+  "name": "node-sdk",
+  "version": "0.0.0",
+  "description": "node-sdk",
+  "main": "server.js",
+  "author": {
+    "name": "dalander",
+    "email": ""
+  },
+  "dependencies": {
+    "connect": "^3.3.5",
+    "connect-route": "^0.1.5"
+  }
+}
