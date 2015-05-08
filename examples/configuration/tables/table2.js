@@ -1,5 +1,5 @@
-﻿// 
-module.exports = {
+﻿module.exports = {
+    authenticate: true,
     insert: function (item, user, req) {
         req.execute();
     },

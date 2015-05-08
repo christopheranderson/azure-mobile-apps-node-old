@@ -1,4 +1,5 @@
 ﻿module.exports = {
+    authenticate: true,
     post: function (req, res, next) {
         res.write('Hello world!');
     },
