@@ -1,3 +1,10 @@
+# VS / NTVS stuff
+*.dat
+*.suo
+bin
+obj
+
+
 # Logs
 logs
 *.log
