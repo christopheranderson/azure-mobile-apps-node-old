@@ -1,22 +1,25 @@
 ﻿var express = require('express'),
-    zumo = require('zumo.tables');
+    tablesFactory = require('zumo.tables');
 
 module.exports = function (configuration) {
     var router = express.Router(),
-        tables = zumo(configuration);
+        tables = tablesFactory(configuration);
 
     router.route('/tables/:tableName/:id')
         .get(function (req, res, next) {
-            if(req.params.id)
-                tables.readSingle(req.params.tableName, req.params.id)
-                    .then(function (entity) {
-                        res.send(JSON.stringify(entity));
-                    });
-            else
-                tables.read(req.params.tableName, req.query)
-                    .then(function (resultStream) {
-                        res.pipe(resultStream);
-                    });
+            var table = tables.get(req.params.tableName),
+                promise = req.params.id
+                    ? table.readSingle(req.params.id)
+                    : table.read(req.query);
+        
+            promise
+                .then(function (resultStream) {
+                    res.pipe(resultStream);
+                })
+                .catch(function (error) {
+                    res.status(500);
+                    res.end();
+                });
         })
         .post(function (req, res, next) {
             // do some stuff
@@ -28,5 +31,11 @@ module.exports = function (configuration) {
 
         });
     
-    return router;
+    // create a new function so we don't directly expose the router and potentially overlap with properties on express.Router
+    var result = function (req, res, next) {
+        router(req, res, next);
+    };    
+    result.add = tables.add;
+
+    return result;
 }
