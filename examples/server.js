@@ -1,8 +1,6 @@
 ﻿var app = require('express')(),                         // create an express instance
     zumo = require('zumo')({                            // create a zumo instance, passing in global configuration
         appName: 'sample',
-        applicationUrl: 'http://overridden-application-url.azurewebsites.net/',
-        gatewayUrl: 'http://overridden-gateway-url.azurewebsites.net/'
     });
 
 // table configuration
@@ -13,18 +11,12 @@ zumo.tables.add('tableName', {                          // add a table configura
     authenticate: true,
     softDelete: true,
     dynamicSchema: false,
-    insert: function (item, user, req) {
+    insert: function (item, user, req) {        
         req.execute();
     },
-    update: function (item, user, req) {
-        req.execute();
-    },
-    delete: function (id, user, req) {
-        req.execute();
-    },
-    read: function (query, user, req) {
-        req.execute();
-    }
+    update: function (item, user, req) { },
+    delete: function (id, user, req) { },
+    read: function (query, user, req) { }
 });
 
 
@@ -37,14 +29,14 @@ zumo.api.add('apiName', {                               // add an API configurat
     post: function (req, res, next) {
         res.write('Hello world!');
     },
-    get: function (req, res, next) { },
-    delete: function (req, res, next) { },
+    'get': function (req, res, next) { },
+    'delete': function (req, res, next) { },
     patch: function (req, res, next) { }
 });
 
 
 // configure express to use all zumo features with supplied configration
-app.use(zumo);
+zumo.attach(app);
 
 // alternatively, attach zumo middleware individually
 app.use(zumo.auth);                                     // attach authentication middleware
