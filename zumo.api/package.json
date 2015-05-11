@@ -1,0 +1,10 @@
+{
+  "name": "zumo.api",
+  "version": "0.0.0",
+  "description": "zumo.api",
+  "main": "app.js",
+  "author": {
+    "name": "dalander",
+    "email": ""
+  }
+}
