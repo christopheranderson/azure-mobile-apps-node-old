@@ -1,0 +1,13 @@
+{
+    "name": "zumo.repository",
+    "version": "0.0.0",
+    "description": "Entire zumo repository",
+    "main": "index.js",
+    "author": {
+        "name": "Dale Anderson",
+        "email": "dalander@microsoft.com"
+    },
+    "scripts": { 
+        "test":  "mocha **/*.tests.js"
+    }
+}
