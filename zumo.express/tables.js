@@ -31,11 +31,7 @@ module.exports = function (configuration) {
 
         });
     
-    // create a new function so we don't directly expose the router and potentially overlap with properties on express.Router
-    var result = function (req, res, next) {
-        router(req, res, next);
-    };    
-    result.add = tables.add;
+    tables.middleware = router;
 
-    return result;
+    return tables;
 }

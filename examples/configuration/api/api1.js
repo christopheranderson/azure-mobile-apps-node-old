@@ -1,15 +1,15 @@
 ﻿module.exports = {
     authenticate: true,
-    post: function (req, res, next) {
+    post: function (req, res, context) {
         res.write('Hello world!');
     },
-    get: function (req, res, next) {  
+    get: function (req, res, context) {  
     
     },
-	delete: function (req, res, next) {  
+	delete: function (req, res, context) {  
     
     },
-    patch: function (req, res, next) {  
+    patch: function (req, res, context) {  
     
     }
 }

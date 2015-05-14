@@ -13,7 +13,7 @@
     <ProjectGuid>743264fa-5337-4611-95ea-9fc52d2e7652</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>server.js</StartupFile>
+    <StartupFile>middleware.js</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -33,10 +33,12 @@
   <ItemGroup>
     <Compile Include="configuration\api\api1.js" />
     <Compile Include="configuration\api\api2.js" />
+    <Compile Include="configuration\api\tables.js" />
+    <Compile Include="configuration\tables\push.js" />
     <Compile Include="configuration\tables\table1.js" />
     <Compile Include="configuration\tables\table2.js" />
+    <Compile Include="middleware.js" />
     <Compile Include="server.js" />
-    <Compile Include="routetest.js" />
     <Content Include=".gitignore" />
     <Content Include="package.json" />
     <Content Include="README.md" />

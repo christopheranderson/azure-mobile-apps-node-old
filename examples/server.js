@@ -11,27 +11,27 @@ zumo.tables.add('tableName', {                          // add a table configura
     authenticate: true,
     softDelete: true,
     dynamicSchema: false,
-    insert: function (item, user, req) {        
-        req.execute();
+    insert: function (item, user, context) {        
+        context.execute();
     },
-    update: function (item, user, req) { },
-    delete: function (id, user, req) { },
-    read: function (query, user, req) { }
+    update: function (item, user, context) { },
+    delete: function (id, user, context) { },
+    read: function (query, user, context) { }
 });
 
 
 // custom API configuration
-zumo.api.add('./configuration/tables/table1');          // add a module exporting the API configuration
-zumo.api.add('./configuration/tables/');                // add a directory of modules exporting the API configuration
+zumo.api.add('./configuration/api/table1');             // add a module exporting the API configuration
+zumo.api.add('./configuration/api/');                   // add a directory of modules exporting the API configuration
 
 zumo.api.add('apiName', {                               // add an API configuration inline
     authenticate: true,
-    post: function (req, res, next) {
+    post: function (req, res, context) {
         res.write('Hello world!');
     },
-    'get': function (req, res, next) { },
-    'delete': function (req, res, next) { },
-    patch: function (req, res, next) { }
+    'get': function (req, res, context) { },
+    'delete': function (req, res, context) { },
+    patch: function (req, res, context) { }
 });
 
 
@@ -39,11 +39,11 @@ zumo.api.add('apiName', {                               // add an API configurat
 zumo.attach(app);
 
 // alternatively, attach zumo middleware individually
-app.use(zumo.auth);                                     // attach authentication middleware
-app.use(zumo.tables);                                   // attach tables middleware
-app.use(zumo.api);                                      // attach API middleware
-app.use(zumo.push);                                     // attach push middleware
-
+app.use(zumo.auth.middleware);                          // attach authentication middleware
+app.use(zumo.tables.middleware);                        // attach tables middleware
+app.use(zumo.api.middleware);                           // attach API middleware
+app.use(zumo.push.middleware);                          // attach push middleware
+                                                        
 
 // start the HTTP server!
 app.listen(process.env.PORT);

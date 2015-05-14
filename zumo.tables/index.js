@@ -3,14 +3,13 @@
 
 module.exports = function (globalConfiguration) {
     var configuration = {};
-
-    return {
-        get: crudFactory,
-        add: function (tableNameOrPath, definition) {
-            if (definition)
-                configuration[tableNameOrPath] = definition;
-            else
-                configurationLoader.loadPath(configuration, tableNameOrPath);
-        }
+    
+    crudFactory.add = function (tableNameOrPath, definition) {
+        if (definition)
+            configuration[tableNameOrPath] = definition;
+        else
+            configurationLoader.loadPath(configuration, tableNameOrPath);
     };
+
+    return crudFactory;
 }

@@ -4,20 +4,20 @@ module.exports = {
     authenticate: true,                                 // default is false - setting to true will force user to be authenticated (no authorisation)
     softDelete: true,                                   // default is false
     dynamicSchema: false,                               // default is true
-    insert: function (item, user, req) {
+    insert: function (item, user, context) {
         log.debug('New record inserted - ', item);
-        return req.execute();
+        return context.execute();
     },
 
-    update: function (item, user, req) {
-        return req.execute();
+    update: function (item, user, context) {
+        return context.execute();
     },
 
-    delete: function (id, user, req) {
-        return req.execute();
+    delete: function (id, user, context) {
+        return context.execute();
     },
 
-    read: function (query, user, req) {
-        return req.execute();
+    read: function (query, user, context) {
+        return context.execute();
     }
 }
