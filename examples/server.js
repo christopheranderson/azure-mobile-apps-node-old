@@ -1,6 +1,12 @@
-﻿var app = require('express')(),                         // create an express instance
+﻿var fs = require('fs'),
+    app = require('express')(),                         // create an express instance
     zumo = require('zumo')({                            // create a zumo instance, passing in global configuration
         appName: 'sample',
+        rootPath: '__mobile',
+        logging: {
+            userStream: fs.createWriteStream('path/to/logfile'),
+            systemStream: fs.createWriteStream('path/to/systemlogfile')
+        }
     });
 
 // table configuration

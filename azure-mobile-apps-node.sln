@@ -5,13 +5,13 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "examples", "examples\examples.njsproj", "{743264FA-5337-4611-95EA-9FC52D2E7652}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo", "zumo\zumo.njsproj", "{6160C3EF-51AF-450A-8011-1D2812356CF4}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo", "node_modules\zumo\zumo.njsproj", "{6160C3EF-51AF-450A-8011-1D2812356CF4}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.core", "zumo.core\zumo.core.njsproj", "{E9892AB1-9071-4C28-9D58-65A6B195C0DB}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.core", "node_modules\zumo.core\zumo.core.njsproj", "{E9892AB1-9071-4C28-9D58-65A6B195C0DB}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.tables", "zumo.tables\zumo.tables.njsproj", "{4AB9D2AE-849D-47B0-BD58-CD859D1C1683}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.tables", "node_modules\zumo.tables\zumo.tables.njsproj", "{4AB9D2AE-849D-47B0-BD58-CD859D1C1683}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.express", "zumo.express\zumo.express.njsproj", "{786A1749-63C8-48F3-BA6D-408790E8618D}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.express", "node_modules\zumo.express\zumo.express.njsproj", "{786A1749-63C8-48F3-BA6D-408790E8618D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "platforms", "platforms", "{F06C5EC1-8900-4950-9438-1BCB071120F6}"
 EndProject
@@ -19,15 +19,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "features", "features", "{21
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{6BD0B9F4-AECF-483D-A357-493383695D8E}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.auth", "zumo.auth\zumo.auth.njsproj", "{130697A4-1512-48AC-AA05-7857896EE89F}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.auth", "node_modules\zumo.auth\zumo.auth.njsproj", "{130697A4-1512-48AC-AA05-7857896EE89F}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.restify", "zumo.restify\zumo.restify.njsproj", "{EA696B82-E275-4891-B584-80EDBE0CBC5A}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.restify", "node_modules\zumo.restify\zumo.restify.njsproj", "{EA696B82-E275-4891-B584-80EDBE0CBC5A}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.query", "zumo.query\zumo.query.njsproj", "{E5C146AD-E763-4A75-8160-42CBDEC9220A}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.query", "node_modules\zumo.query\zumo.query.njsproj", "{E5C146AD-E763-4A75-8160-42CBDEC9220A}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.push", "zumo.push\zumo.push.njsproj", "{36CE5B42-A718-41A1-8727-43DA116509F0}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.push", "node_modules\zumo.push\zumo.push.njsproj", "{36CE5B42-A718-41A1-8727-43DA116509F0}"
 EndProject
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.api", "zumo.api\zumo.api.njsproj", "{1C695E5D-0CCD-4F6E-B7DA-48FB0F9DE44C}"
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.api", "node_modules\zumo.api\zumo.api.njsproj", "{1C695E5D-0CCD-4F6E-B7DA-48FB0F9DE44C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "query", "query", "{9132B0BA-918B-406E-B9C1-93F71964D1A5}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.query.odata", "node_modules\zumo.query.odata\zumo.query.odata.njsproj", "{16674362-6065-48EF-A437-2B54E913E14A}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "zumo.query.sql", "node_modules\zumo.query.sql\zumo.query.sql.njsproj", "{D9CDEF5D-C790-45D9-B8EE-EC21D450E439}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +81,14 @@ Global
 		{1C695E5D-0CCD-4F6E-B7DA-48FB0F9DE44C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C695E5D-0CCD-4F6E-B7DA-48FB0F9DE44C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C695E5D-0CCD-4F6E-B7DA-48FB0F9DE44C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16674362-6065-48EF-A437-2B54E913E14A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16674362-6065-48EF-A437-2B54E913E14A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16674362-6065-48EF-A437-2B54E913E14A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16674362-6065-48EF-A437-2B54E913E14A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9CDEF5D-C790-45D9-B8EE-EC21D450E439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9CDEF5D-C790-45D9-B8EE-EC21D450E439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9CDEF5D-C790-45D9-B8EE-EC21D450E439}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9CDEF5D-C790-45D9-B8EE-EC21D450E439}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,8 +100,10 @@ Global
 		{786A1749-63C8-48F3-BA6D-408790E8618D} = {F06C5EC1-8900-4950-9438-1BCB071120F6}
 		{130697A4-1512-48AC-AA05-7857896EE89F} = {21EE1A5A-B53F-449D-90D8-CFA75AE46714}
 		{EA696B82-E275-4891-B584-80EDBE0CBC5A} = {F06C5EC1-8900-4950-9438-1BCB071120F6}
-		{E5C146AD-E763-4A75-8160-42CBDEC9220A} = {6BD0B9F4-AECF-483D-A357-493383695D8E}
+		{E5C146AD-E763-4A75-8160-42CBDEC9220A} = {9132B0BA-918B-406E-B9C1-93F71964D1A5}
 		{36CE5B42-A718-41A1-8727-43DA116509F0} = {21EE1A5A-B53F-449D-90D8-CFA75AE46714}
 		{1C695E5D-0CCD-4F6E-B7DA-48FB0F9DE44C} = {21EE1A5A-B53F-449D-90D8-CFA75AE46714}
+		{16674362-6065-48EF-A437-2B54E913E14A} = {9132B0BA-918B-406E-B9C1-93F71964D1A5}
+		{D9CDEF5D-C790-45D9-B8EE-EC21D450E439} = {9132B0BA-918B-406E-B9C1-93F71964D1A5}
 	EndGlobalSection
 EndGlobal

@@ -17,13 +17,13 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// configure zumo
-zumo.tables.add('./configuration/tables/');
-zumo.api.add('./configuration/api/');
-
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
+
+// configure zumo
+zumo.tables.add('./configuration/tables/');
+zumo.api.add('./configuration/api/');
 
 // attach zumo middleware
 app.use(zumo.auth.middleware);
