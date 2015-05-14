@@ -38,6 +38,7 @@
     <Compile Include="configuration\tables\table1.js" />
     <Compile Include="configuration\tables\table2.js" />
     <Compile Include="middleware.js" />
+    <Compile Include="existing.js" />
     <Compile Include="server.js" />
     <Content Include=".gitignore" />
     <Content Include="package.json" />
