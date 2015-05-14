@@ -27,7 +27,7 @@ zumo.tables.add('tableName', {                          // add a table configura
 
 
 // custom API configuration
-zumo.api.add('./configuration/api/table1');             // add a module exporting the API configuration
+zumo.api.add('./configuration/api/api1');               // add a module exporting the API configuration
 zumo.api.add('./configuration/api/');                   // add a directory of modules exporting the API configuration
 
 zumo.api.add('apiName', {                               // add an API configuration inline
@@ -45,11 +45,11 @@ zumo.api.add('apiName', {                               // add an API configurat
 zumo.attach(app);
 
 // alternatively, attach zumo middleware individually
-app.use(zumo.auth.middleware);                          // attach authentication middleware
-app.use(zumo.tables.middleware);                        // attach tables middleware
-app.use(zumo.api.middleware);                           // attach API middleware
-app.use(zumo.push.middleware);                          // attach push middleware
-                                                        
+//app.use(zumo.auth.middleware);                        // attach authentication middleware
+//app.use(zumo.tables.middleware);                      // attach tables middleware
+//app.use(zumo.api.middleware);                         // attach API middleware
+//app.use(zumo.push.middleware);                        // attach push middleware
+
 
 // start the HTTP server!
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 3000);

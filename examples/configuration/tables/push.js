@@ -1,9 +1,6 @@
-﻿var azure = require('azure'),
-    notificationHubService = azure.createNotificationHubService('hubName', 'endpointOrConnectionString', 'sharedAccessKeyName', 'sharedAccessKeyValue');
-
-module.exports = {
+﻿module.exports = {
     insert: function (item, user, context) {
-        notificationHubService.wns.sendTileSquarePeekImageAndText01(
+        context.zumo.push.wns.sendTileSquarePeekImageAndText01(
             null,
             {
                 image1src: 'http://foobar.com/dog.jpg',
