@@ -49,7 +49,8 @@ zumo.attach(app);
 //app.use(zumo.tables.middleware);                      // attach tables middleware
 //app.use(zumo.api.middleware);                         // attach API middleware
 //app.use(zumo.push.middleware);                        // attach push middleware
+//app.use(zumo.error.middleware);                       // attach push middleware
 
 
 // start the HTTP server!
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 1337);

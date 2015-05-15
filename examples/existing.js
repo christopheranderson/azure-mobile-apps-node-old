@@ -28,6 +28,7 @@ zumo.api.add('./configuration/api/');
 // attach zumo middleware
 app.use(zumo.auth.middleware);
 app.use(zumo.tables.middleware);
+app.use(zumo.error.middleware);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

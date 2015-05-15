@@ -13,7 +13,7 @@
     <ProjectGuid>743264fa-5337-4611-95ea-9fc52d2e7652</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>middleware.js</StartupFile>
+    <StartupFile>server.js</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

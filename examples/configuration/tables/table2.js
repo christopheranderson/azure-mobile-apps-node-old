@@ -1,18 +1,18 @@
 ﻿module.exports = {
     authenticate: true,
-    insert: function (item, user, context) {
+    insert: function (item, context) {
         context.execute();
     },
 
-    update: function (item, user, context) {
+    update: function (item, context) {
         context.execute();
     },
 
-    delete: function (id, user, context) {
+    delete: function (id, context) {
         context.execute();
     },
 
-    read: function (query, user, context) {
+    read: function (query, context) {
         context.execute();
     }
 }
