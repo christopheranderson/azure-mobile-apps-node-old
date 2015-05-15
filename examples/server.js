@@ -4,8 +4,8 @@
         appName: 'sample',
         rootPath: '__mobile',
         logging: {
-            userStream: fs.createWriteStream('path/to/logfile'),
-            systemStream: fs.createWriteStream('path/to/systemlogfile')
+            //userStream: fs.createWriteStream('logs/user.log'),
+            //systemStream: fs.createWriteStream('logs/system.log')
         }
     });
 
@@ -41,7 +41,7 @@ zumo.api.add('apiName', {                               // add an API configurat
 });
 
 
-// configure express to use all zumo features with supplied configration
+// configure express to use all zumo features with supplied configuration
 zumo.attach(app);
 
 // alternatively, attach zumo middleware individually
