@@ -4,8 +4,13 @@
         appName: 'sample',
         rootPath: '__mobile',
         logging: {
-            //userStream: fs.createWriteStream('logs/user.log'),
-            //systemStream: fs.createWriteStream('logs/system.log')
+            userStream: process.stderr,                 // any stream can be specified for logs, default is stdout
+            systemStream: fs.createWriteStream('logs/system.log')
+        },
+        environments: {
+            dev: { rootPath: 'path' },                  // configuration can be specified for individual deployment environments
+            test: { rootPath: 'otherPath' },            // any setting can be specified and will override those set in global configuration
+            prod: { rootPath: '__mobile' }              // environment will be detected automatically or specified in a process.env (web.config) variable
         }
     });
 
@@ -17,12 +22,12 @@ zumo.tables.add('tableName', {                          // add a table configura
     authenticate: true,
     softDelete: true,
     dynamicSchema: false,
-    insert: function (item, user, context) {        
+    insert: function (item, context) {        
         context.execute();
     },
-    update: function (item, user, context) { },
-    delete: function (id, user, context) { },
-    read: function (query, user, context) { }
+    update: function (item, context) { },
+    delete: function (id, context) { },
+    read: function (query, context) { }
 });
 
 
