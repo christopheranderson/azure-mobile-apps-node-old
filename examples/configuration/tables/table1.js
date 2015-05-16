@@ -9,8 +9,8 @@ module.exports = {
         return context.execute();
     },
 
-    update: function (item, context) {
-        return context.execute();
+    update: function (item, user, context) {            // to assist with backwards compatibility / migration, providing a function with three arguments
+        return context.execute();                       // will cause the user object to be passed as the second parameter
     },
 
     delete: function (id, context) {

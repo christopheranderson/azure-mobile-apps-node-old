@@ -1,12 +1,12 @@
 ﻿module.exports = {
     authenticate: true,
-    post: function (req, res, context) {
-        context.zumo.tables('table1')
+    post: function (req, res, next) {
+        return req.zumo.tables('table1')
             .query()
             .where({ id: 'someId' })
             .then(function (results) {
                 if(results.length === 0)
-                    context.zumo.tables('table2').create({ id: 'new', value: 37 });
+                    return req.zumo.tables('table2').create({ id: 'new', value: 37 });
             });
     }
 }
