@@ -24,6 +24,10 @@ app.get('/test2', function (req, res, next) {
 });
 
 app.get('/error', function (req, res, next) {
+    throw new Error("Something went wrong");
+});
+
+app.get('/error2', function (req, res, next) {
     next(new Error("Something went wrong"));
 });
 
