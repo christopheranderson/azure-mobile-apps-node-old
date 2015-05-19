@@ -31,25 +31,28 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="configuration\api\auth.js" />
-    <Compile Include="configuration\api\api1.js" />
-    <Compile Include="configuration\api\flow.js" />
-    <Compile Include="configuration\api\tables.js" />
-    <Compile Include="configuration\tables\push.js" />
-    <Compile Include="configuration\tables\table1.js" />
+    <Compile Include="old\api\auth.js" />
+    <Compile Include="old\api\api1.js" />
+    <Compile Include="old\api\flow.js" />
+    <Compile Include="old\api\tables.js" />
+    <Compile Include="old\tables\push.js" />
+    <Compile Include="old\tables\table1.js" />
     <Compile Include="middleware.js" />
     <Compile Include="existing.js" />
     <Compile Include="minimal.js" />
     <Compile Include="quickstart.js" />
     <Compile Include="server.js" />
+    <Compile Include="tablesMiddleware.js" />
+    <Compile Include="tables\firstCut.js" />
     <Content Include=".gitignore" />
     <Content Include="package.json" />
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="configuration\" />
-    <Folder Include="configuration\api\" />
-    <Folder Include="configuration\tables\" />
+    <Folder Include="tables\" />
+    <Folder Include="old\" />
+    <Folder Include="old\api\" />
+    <Folder Include="old\tables\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

@@ -3,13 +3,9 @@
     zumo = require('zumo')({                            // create a zumo instance, passing in global configuration
         appName: 'sample',
         rootPath: '__mobile',
-        logging: {
-            userStream: process.stderr,                 // any stream can be specified for logs, default is stdout
-            systemStream: fs.createWriteStream('logs/system.log')
-        },
-        environments: {
-            dev: { rootPath: 'path' },                  // configuration can be specified for individual deployment environments
-            test: { rootPath: 'otherPath' },            // any setting can be specified and will override those set in global configuration
+        environments: {                                 // configuration can be specified for individual deployment environments
+            dev: { logStream: process.stderr, },        // any setting can be specified and will override those set in global configuration
+            test: { logStream: fs.createWriteStream('logs/zumo.log') },
             prod: { rootPath: '__mobile' }              // environment will be detected automatically or specified in a process.env (web.config) variable
         }
     });
@@ -22,27 +18,12 @@ zumo.tables.add('tableName', {                          // add a table configura
     authenticate: true,
     softDelete: true,
     dynamicSchema: false,
-    insert: function (item, context) {        
+    insert: function (item, context) {
         context.execute();
     },
     update: function (item, context) { },
     delete: function (id, context) { },
     read: function (query, context) { }
-});
-
-
-// custom API configuration
-zumo.api.add('./configuration/api/api1');               // add a module exporting the API configuration
-zumo.api.add('./configuration/api/');                   // add a directory of modules exporting the API configuration
-
-zumo.api.add('apiName', {                               // add an API configuration inline
-    authenticate: true,
-    post: function (req, res, next) {
-        res.write('Hello world!');
-    },
-    'get': function (req, res, next) { },
-    'delete': function (req, res, next) { },
-    patch: function (req, res, next) { }
 });
 
 
