@@ -44,6 +44,8 @@
     <Compile Include="server.js" />
     <Compile Include="tablesMiddleware.js" />
     <Compile Include="tables\firstCut.js" />
+    <Compile Include="tables\procedural.js" />
+    <Compile Include="tables\middleware.js" />
     <Content Include=".gitignore" />
     <Content Include="package.json" />
     <Content Include="README.md" />

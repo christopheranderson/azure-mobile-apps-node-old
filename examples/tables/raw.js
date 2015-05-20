@@ -15,10 +15,9 @@ module.exports = {
         });
     },
     
-    // we can pass an object containing pre, post and func
+    // we can pass an object containing pre, post and / or func
     insert: {
         pre: authorise,
-        post: log,
         func: function (item, context) {
             return context.execute().then(function () {
                 log.debug('New record inserted - ', JSON.stringify(item));
