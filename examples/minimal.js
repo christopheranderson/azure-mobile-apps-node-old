@@ -1,8 +1,7 @@
 ﻿var app = require('express')(),
     zumo = require('zumo')();
 
-zumo.tables.add('./configuration/tables/');
-zumo.api.add('./configuration/api/');
+// table configuration is imported from /tables by default
 zumo.attach(app);
 
 app.listen(1337);

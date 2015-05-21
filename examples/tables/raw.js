@@ -1,41 +1,35 @@
-﻿var auth = require('zumo.auth'),
-    logger = require('zumo.core/logger');
+﻿var zumo = require('zumo'),
+    tables = zumo.tables,
+    logger = zumo.logger;
 
 module.exports = {
     softDelete: true,
-    // declare middleware to execute for all operations - auth.isAuthenticated is a built-in piece of middleware
-    pre: auth.isAuthenticated,
+    undelete: true,
     
-    // we can just simply pass the execution function
-    read: function (query, context) {
-        return context.execute().then(function (results) {      // note that this does not support streaming!
+    // the middleware property executes supplied middleware for all operations - tables.execute represents the middleware defined for each operation
+    middleware: [tables.execute, log],
+    
+    // the executeRead function generates middleware that will execute the provided function with a (query, context) signature
+    read: tables.executeRead(function (query, context) {
+        return context.execute().then(function (results) {
             return results.forEach(function (item) {
                 item.loaded = new Date();
             });
         });
-    },
+    }),
     
-    // we can pass an object containing pre, post and / or func
-    insert: {
-        pre: authorise,
-        func: function (item, context) {
-            return context.execute().then(function () {
-                log.debug('New record inserted - ', JSON.stringify(item));
-            });
-        }
-    },
+    // we can pass an array of middleware to execute
+    insert: [authorise, tables.executeInsert(function (item, context) {
+        return context.execute().then(function () {
+            log.debug('New record inserted - ', JSON.stringify(item));
+        });
+    })],
     
-    // we can omit the func property to get default behavior with pre and post middleware
-    update: {
-        pre: authorise,
-        post: log
-    },
+    // not passing a function to executeXxx will execute the operation with default behaviour
+    update: [authorise, tables.executeUpdate(), log]
     
     // omitting an operation altogether will result in default behavior
-    //delete: {
-    //    pre: authorise,
-    //    post: log
-    //}
+    //delete: [tables.executeDelete()]
 }
 
 function authorise(req, res, next) {
@@ -48,11 +42,3 @@ function authorise(req, res, next) {
 function log(req, res, next) {
     logger.debug(req.query);
 }
-
-/*
-middleware execution order:
-read: parseQuery, pre, executeRead(func), post, render
-insert: parseEntity, pre, executeInsert(func), post, render
-update: parseEntity, pre, executeUpdate(func), post, render
-delete: parseId, pre, executeDelete(func), post, render
- */

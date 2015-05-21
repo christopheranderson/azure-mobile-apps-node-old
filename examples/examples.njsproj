@@ -31,6 +31,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="cases.js" />
     <Compile Include="old\api\auth.js" />
     <Compile Include="old\api\api1.js" />
     <Compile Include="old\api\flow.js" />
@@ -43,7 +44,7 @@
     <Compile Include="quickstart.js" />
     <Compile Include="server.js" />
     <Compile Include="tablesMiddleware.js" />
-    <Compile Include="tables\firstCut.js" />
+    <Compile Include="tables\raw.js" />
     <Compile Include="tables\procedural.js" />
     <Compile Include="tables\middleware.js" />
     <Content Include=".gitignore" />

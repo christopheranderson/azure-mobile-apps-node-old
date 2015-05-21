@@ -11,8 +11,8 @@
     });
 
 // table configuration
-zumo.tables.add('./configuration/tables/table1');       // add a module exporting the table configuration
-zumo.tables.add('./configuration/tables/');             // add a directory of modules exporting the table configuration
+zumo.tables.import('./configuration/tables/table1');    // import a module exporting the table configuration
+zumo.tables.import('./configuration/tables/');          // import a directory of modules exporting the table configuration
 
 zumo.tables.add('tableName', {                          // add a table configuration inline
     authenticate: true,
