@@ -1,6 +1,7 @@
 # VS / NTVS stuff
 *.dat
 *.suo
+*.tmp
 bin
 obj
 
