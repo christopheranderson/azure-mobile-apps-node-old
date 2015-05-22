@@ -13,7 +13,7 @@
             // Automatically stop program after launch.
             "stopOnEntry": true,
             // Command line arguments passed to the program.
-            "args": [],
+            "args": ["**/*.tests.js"],
             // Workspace relative or absolute path to the working directory of the program being debugged. Default is the current workspace.
             "cwd": ".",
             // Workspace relative or absolute path to the runtime executable to be used. Default is the runtime executable on the PATH.
@@ -28,6 +28,16 @@
             "address": "localhost",
             // Port to attach to.
             "port": 5858
+        },
+        {
+            "name": "Test",
+            "type": "node",
+            "program": "node_modules/azure-mobile-apps/node_modules/mocha/bin/_mocha",
+            "stopOnEntry": false,
+            "args": ["**/*.tests.js"],
+            "cwd": ".",
+            "runtimeExecutable": null,
+            "env": { }
         }
     ]
 }
