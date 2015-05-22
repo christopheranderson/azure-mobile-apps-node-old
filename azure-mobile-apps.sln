@@ -9,6 +9,14 @@ Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "azure-mobile-apps.express",
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "azure-mobile-apps.tables", "node_modules\azure-mobile-apps.tables\azure-mobile-apps.tables.njsproj", "{0E87B048-72FB-4898-925C-8B56CEE9E275}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{78D0C4C3-ECA7-4F66-A310-7CCC9B3E83BC}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		package.json = package.json
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
