@@ -37,7 +37,7 @@ table.insert = function (item, user, context) {
             // Permission record was found. Continue normal execution.
             return context.execute();
         } else {
-            console.log('User %s attempted to submit an order without permissions.', user.userId);
+            log.info('User %s attempted to submit an order without permissions.', user.userId);
             context.response.status(statusCodes.FORBIDDEN).send('You do not have permission to submit orders.');
         }
     });
