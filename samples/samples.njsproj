@@ -18,6 +18,7 @@
   <ItemGroup>
     <Compile Include="index.js" />
     <Compile Include="quickstart.js" />
+    <Compile Include="tables\tableController.js" />
     <Compile Include="tables\todoitem.js" />
   </ItemGroup>
   <ItemGroup>
