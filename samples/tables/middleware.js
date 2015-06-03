@@ -1,7 +1,7 @@
 var table = require('azure-mobile-apps').table()
 
-table.use.read(modifyQuery, table.operation, setDateLoaded)
-table.use.insert(setUserId, table.operation)
+table.read.use(modifyQuery, table.operation, setDateLoaded)
+table.insert.use(setUserId, table.operation)
 
 function modifyQuery(req, res, next) {
     req.query = req.query.where({ category: 'furniture' })
