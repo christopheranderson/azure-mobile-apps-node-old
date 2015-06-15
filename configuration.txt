@@ -1,4 +1,0 @@
-var configuration = {
-	appName: 'mobileAppName',
-	tableRoute: '/tables/:tableName/:id'
-}
