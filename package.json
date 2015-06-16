@@ -11,6 +11,7 @@
     "test": "mocha --opts mocha.opts"
   },
   "devDependencies": {
-    "mocha": "^2.2.5"
+  },
+  "dependencies": {
   }
 }
