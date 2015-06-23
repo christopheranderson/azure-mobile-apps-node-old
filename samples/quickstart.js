@@ -1,5 +1,12 @@
 ﻿var app = require('express')(),
-    mobileApp = require('azure-mobile-apps')();
+    mobileApp = require('azure-mobile-apps')({
+        data: {
+            user: 'dale',
+            password: 'Blah1234',
+            server: 'localhost',
+            database: 'todo'
+        }
+    });
 
 mobileApp.tables.add('todoitem');
 mobileApp.attach(app);
