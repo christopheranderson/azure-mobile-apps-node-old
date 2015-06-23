@@ -1,9 +1,9 @@
 ﻿var app = require('express')(),
     mobileApp = require('azure-mobile-apps')({
         data: {
-            user: 'dale',
+            user: 'dalander',
             password: 'Blah1234',
-            server: 'localhost',
+            server: 'dalanderv2.database.windows.net',
             database: 'todo'
         }
     });
