@@ -4,4 +4,4 @@
 mobileApp.tables.add('todoitem');
 mobileApp.attach(app);
 
-app.listen(process.env.PORT);
+app.listen(3000);
