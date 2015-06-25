@@ -1,9 +1,17 @@
 ﻿var app = require('express')(),
     mobileApp = require('azure-mobile-apps')({
+        // data: {
+        //     provider: 'sql',
+        //     user: 'dalander',
+        //     password: 'Blah1234',
+        //     server: 'dalanderv2.database.windows.net',
+        //     database: 'todo'
+        // }
         data: {
-            user: 'dalander',
+            provider: 'sql',
+            user: 'dale',
             password: 'Blah1234',
-            server: 'dalanderv2.database.windows.net',
+            server: 'localhost',
             database: 'todo'
         }
     });
