@@ -8,7 +8,7 @@
     "email": "dalander@microsoft.com"
   },
   "scripts": {
-    "test": "mocha --opts mocha.opts"
+    "test": "mocha"
   },
   "devDependencies": {
   },
