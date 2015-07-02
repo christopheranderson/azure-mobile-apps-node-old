@@ -16,6 +16,8 @@ mobileApp.tables.add('dates');
 mobileApp.tables.add('movies');
 mobileApp.tables.add('ParamsTestTable');
 mobileApp.tables.add('roundTripTable');
+mobileApp.tables.add('IntIdRoundTripTable');
+mobileApp.tables.add('intIdMovies');
 mobileApp.attach(app);
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
