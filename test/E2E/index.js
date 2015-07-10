@@ -10,13 +10,13 @@ var app = require('express')(),
     });
 
 mobileApp.tables.add('authenticated');
-mobileApp.tables.add('blog_comments');
-mobileApp.tables.add('blog_posts');
-mobileApp.tables.add('dates');
-mobileApp.tables.add('movies');
+mobileApp.tables.add('blog_comments', { columns: { postId: 'string', commentText: 'string', name: 'string', test: 'number' } });
+mobileApp.tables.add('blog_posts', { columns: { title: 'string', commentCount: 'number', showComments: 'boolean', data: 'string' } });
+mobileApp.tables.add('dates', { columns: { date: 'date', dateOffset: 'date' } });
+mobileApp.tables.add('movies', { columns: { title: 'string', duration: 'number', mpaaRating: 'string', releaseDate: 'date', bestPictureWinner: 'boolean' } });
 mobileApp.tables.add('ParamsTestTable');
-mobileApp.tables.add('IntIdRoundTripTable', { autoIncrement: true });
-mobileApp.tables.add('intIdMovies', { autoIncrement: true });
+mobileApp.tables.add('IntIdRoundTripTable', { autoIncrement: true, columns: { name: 'string', date1: 'date', bool: 'boolean', integer: 'number', number: 'number' } });
+mobileApp.tables.add('intIdMovies', { autoIncrement: true, columns: { title: 'string', duration: 'number', mpaaRating: 'string', releaseDate: 'date', bestPictureWinner: 'boolean' } });
 
 var table = mobileApp.table();
 table.update(function (context) {
@@ -32,6 +32,7 @@ table.update(function (context) {
             }
         });
 });
+table.columns = { name: 'string', date1: 'date', bool: 'boolean', integer: 'number', number: 'number' };
 mobileApp.tables.add('roundTripTable', table);
 
 mobileApp.attach(app);
