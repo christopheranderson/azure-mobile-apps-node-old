@@ -17,6 +17,7 @@ mobileApp.tables.add('movies', { columns: { title: 'string', duration: 'number',
 mobileApp.tables.add('ParamsTestTable');
 mobileApp.tables.add('IntIdRoundTripTable', { autoIncrement: true, columns: { name: 'string', date1: 'date', bool: 'boolean', integer: 'number', number: 'number' } });
 mobileApp.tables.add('intIdMovies', { autoIncrement: true, columns: { title: 'string', duration: 'number', mpaaRating: 'string', releaseDate: 'date', bestPictureWinner: 'boolean' } });
+mobileApp.tables.add('OfflineReady');
 
 var table = mobileApp.table();
 table.update(function (context) {
