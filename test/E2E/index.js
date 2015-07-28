@@ -1,4 +1,6 @@
-var app = require('express')(),
+var bodyParser = require('body-parser'),
+    xmlBodyParser = require('express-xml-bodyparser'),
+    app = require('express')(),
     mobileApp = require('azure-mobile-apps')({
         data: {
             provider: 'sql',
@@ -59,11 +61,15 @@ function mapParameters(context) {
 }
 
 
-mobileApp.attach(app);
-
 app.get('/api/jwtTokenGenerator', function (req, res, next) {
     // we're not testing key signing - this is done by the gateway or easyauth. just return a precanned token, signed with the key 'secret' (hashed with sha256)
     res.status(200).send('{"token":{"audiences":["urn:microsoft:windows-azure:zumo"],"claims":[{"m_issuer":"urn:microsoft:windows-azure:zumo","m_originalIssuer":"urn:microsoft:windows-azure:zumo","m_type":"ver","m_value":"3","m_valueType":"http://www.w3.org/2001/XMLSchema#string"},{"m_issuer":"urn:microsoft:windows-azure:zumo","m_originalIssuer":"urn:microsoft:windows-azure:zumo","m_type":"uid","m_value":"Facebook:someuserid@hotmail.com","m_valueType":"http://www.w3.org/2001/XMLSchema#string"},{"m_issuer":"urn:microsoft:windows-azure:zumo","m_originalIssuer":"urn:microsoft:windows-azure:zumo","m_type":"iss","m_value":"urn:microsoft:windows-azure:zumo","m_valueType":"http://www.w3.org/2001/XMLSchema#string"},{"m_issuer":"urn:microsoft:windows-azure:zumo","m_originalIssuer":"urn:microsoft:windows-azure:zumo","m_type":"aud","m_value":"urn:microsoft:windows-azure:zumo","m_valueType":"http://www.w3.org/2001/XMLSchema#string"},{"m_issuer":"urn:microsoft:windows-azure:zumo","m_originalIssuer":"urn:microsoft:windows-azure:zumo","m_type":"exp","m_value":"1440009424","m_valueType":"JSON","m_properties":{"http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/json_type":"System.Int64"}},{"m_issuer":"urn:microsoft:windows-azure:zumo","m_originalIssuer":"urn:microsoft:windows-azure:zumo","m_type":"nbf","m_value":"1437417424","m_valueType":"JSON","m_properties":{"http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/json_type":"System.Int64"}}],"encodedHeader":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9","encodedPayload":"eyJ2ZXIiOiIzIiwidWlkIjoiRmFjZWJvb2s6c29tZXVzZXJpZEBob3RtYWlsLmNvbSIsImlzcyI6InVybjptaWNyb3NvZnQ6d2luZG93cy1henVyZTp6dW1vIiwiYXVkIjoidXJuOm1pY3Jvc29mdDp3aW5kb3dzLWF6dXJlOnp1bW8iLCJleHAiOjE0NDAwMDk0MjQsIm5iZiI6MTQzNzQxNzQyNH0","header":{"typ":"JWT","alg":"HS256"},"issuer":"urn:microsoft:windows-azure:zumo","payload":{"ver":"3","uid":"Facebook:someuserid@hotmail.com","iss":"urn:microsoft:windows-azure:zumo","aud":"urn:microsoft:windows-azure:zumo","exp":1440009424,"nbf":1437417424},"rawData":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIzIiwidWlkIjoiRmFjZWJvb2s6c29tZXVzZXJpZEBob3RtYWlsLmNvbSIsImlzcyI6InVybjptaWNyb3NvZnQ6d2luZG93cy1henVyZTp6dW1vIiwiYXVkIjoidXJuOm1pY3Jvc29mdDp3aW5kb3dzLWF6dXJlOnp1bW8iLCJleHAiOjE0NDAwMDk0MjQsIm5iZiI6MTQzNzQxNzQyNH0.9EvyzV53b2SkBCc46GR4N77NU-3SJEuYzQl8lmlp7QY","rawHeader":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9","rawPayload":"eyJ2ZXIiOiIzIiwidWlkIjoiRmFjZWJvb2s6c29tZXVzZXJpZEBob3RtYWlsLmNvbSIsImlzcyI6InVybjptaWNyb3NvZnQ6d2luZG93cy1henVyZTp6dW1vIiwiYXVkIjoidXJuOm1pY3Jvc29mdDp3aW5kb3dzLWF6dXJlOnp1bW8iLCJleHAiOjE0NDAwMDk0MjQsIm5iZiI6MTQzNzQxNzQyNH0","rawSignature":"9EvyzV53b2SkBCc46GR4N77NU-3SJEuYzQl8lmlp7QY","securityKeys":[],"signatureAlgorithm":"HS256","signingCredentials":{"digestAlgorithm":"http://www.w3.org/2001/04/xmlenc#sha256","signatureAlgorithm":"http://www.w3.org/2001/04/xmldsig-more#hmac-sha256","signingKey":{"keySize":256}},"validFrom":"2015-07-20T18:37:04Z","validTo":"2015-08-19T18:37:04Z"}}');
-})
+});
 
+app.all('/api/applicationPermission', [bodyParser.raw(), require('./applicationPermission')]);
+// app.all('/api/applicationPermission', [bodyParser.json(), bodyParser.text(), xmlBodyParser({ strict: false }), require('./applicationPermission')]);
+
+require('./movieFinder').register(app);
+
+mobileApp.attach(app);
 app.listen(process.env.PORT || 3000);
