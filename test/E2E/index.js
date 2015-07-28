@@ -60,6 +60,7 @@ function mapParameters(context) {
     };
 }
 
+mobileApp.attach(app);
 
 app.get('/api/jwtTokenGenerator', function (req, res, next) {
     // we're not testing key signing - this is done by the gateway or easyauth. just return a precanned token, signed with the key 'secret' (hashed with sha256)
@@ -71,5 +72,4 @@ app.all('/api/applicationPermission', [bodyParser.raw(), require('./applicationP
 
 require('./movieFinder').register(app);
 
-mobileApp.attach(app);
 app.listen(process.env.PORT || 3000);
