@@ -1,10 +1,11 @@
-var queries = require('azure-mobile-apps.query');
+var queries = require('azure-mobile-apps.query'),
+    bodyParser = require('body-parser');
 
 exports.register = function(app) {
-    app.get('/api/movieFinder/title/:title', getByTitle);
-    app.get('/api/movieFinder/date/:year/:month/:day', getByDate);
-    app.post('/api/movieFinder/moviesOnSameYear', fetchMoviesSameYear);
-    app.post('/api/movieFinder/moviesWithSameDuration', fetchMoviesSameDuration);
+    app.get('/api/movieFinder/title/:title', [bodyParser.json(), getByTitle]);
+    app.get('/api/movieFinder/date/:year/:month/:day', [bodyParser.json(), getByDate]);
+    app.post('/api/movieFinder/moviesOnSameYear', [bodyParser.json(), fetchMoviesSameYear]);
+    app.post('/api/movieFinder/moviesWithSameDuration', [bodyParser.json(), fetchMoviesSameDuration]);
 }
 
 function getByTitle(req, res) {
