@@ -19,7 +19,7 @@ module.exports = function (req, res, next) {
     }
 
     if (req.body && Object.keys(req.body).length) {
-        output.body = req.body.toString('utf8');
+        output.body = req.body;
     }
 
     //output.user = JSON.parse(JSON.stringify(req.user)); // remove functions
