@@ -55,20 +55,22 @@ Azure has a common set of contributor guidelines found here: [http://azure.githu
 #### Set up development environment
 
 0. Fork the Azure Mobile Apps repository
-1. Clone the repository - `git clone https://github.com/<USERNAME>/azure-mobile-apps-node.git`
-2. We're currently developing off the master branch (prior to release). When we go to production, we will likely be using a developer branch and you'll want to check out that branch with `git checkout <branch_name>`
-3. Run `install.bat` to add the required dependencies to the project.
-4. Run `npm install --dev` to install required developer dependencies.
-4. Set your environment settings
- - `ms_tableconnectionstring` should be your Azure SQL DB connection string
+0. Clone the repository - `git clone https://github.com/<USERNAME>/azure-mobile-apps-node.git`
+0. We're currently developing off the master branch (prior to release). When we go to production, we will likely be using a developer branch and you'll want to check out that branch with `git checkout <branch_name>`
+0. Run `install.bat` to add the required dependencies to the project.
+0. Provision a database either in Azure SQL DB (x-plat) or a local SQL Express instance (windows only)
+0. Execute the [azure-mobile-apps-test.sql](./node_modules/azure-mobile-apps.data.sql/test/infrastructure/azure-mobile-apps-test.sql) script against your target database.
+0. Install mocha globally - `npm install -g mocha`
+0. Set your environment settings
+ - `ms_tableconnectionstring` should be your Azure SQL DB connection string (omit this if using a local SQL Express instance instead)
  - `ema_runtimeurl` should be your Azure Gateway URL (only necessary for Auth)
- - `ms_signingkey` comes from your Azure Gateway
- - `ms_mobileappname` is a name given to your test Apps
+ - `ms_signingkey` comes from your Azure Gateway (auth only)
+ - `ms_mobileappname` is a name given to your test Apps (optional)
 
  In powershell, you can set these settings via ``$env:<SETTINGNAME> = <SETTINGVALUE>``
 
  In the future, you'll need to provide additional configuration for Push
-5. You should run tests prior to development to ensure you've properly set up your environment. To run tests, run `npm test`.
+0. You should run tests prior to development to ensure you've properly set up your environment. To run tests, run `npm test`.
 
 #### Apply your changes
 
