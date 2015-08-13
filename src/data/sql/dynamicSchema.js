@@ -39,7 +39,11 @@ module.exports = function (config) {
                     })
                     .then(function () {
                         if(table.indexes) {
-                            return createIndexes();
+                            if(Array.isArray(table.indexes)) {
+                                return createIndexes();
+                            } else {
+                                throw new Error('Index configuration in table \'' + table.name + '\' is not an array of strings / arrays of strings.');
+                            }
                         }
                     });
             }
@@ -47,8 +51,8 @@ module.exports = function (config) {
             function createIndexes() {
                 log.info('Creating indexes for table ' + table.name);
                 return promises.all(
-                    Object.keys(table.indexes).map(function (name) {
-                        return execute(config, statements.createIndex(table, name, table.indexes[name]));
+                    table.indexes.map(function (indexConfig) {
+                        return execute(config, statements.createIndex(table, indexConfig));
                     })
                 );
             }

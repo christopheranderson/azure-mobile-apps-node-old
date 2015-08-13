@@ -8,6 +8,7 @@ var expect = require('chai').use(require('chai-subset')).expect,
     queries = require('../../../src/query'),
     promises = require('../../../src/utilities/promises'),
     helpers = require('../../../src/data/sql/helpers'),
+    tableName = 'tableCreationTest', 
     table, app, mobileApp;
 
 describe('azure-mobile-apps.express.integration.tables.creation', function () {
@@ -17,22 +18,22 @@ describe('azure-mobile-apps.express.integration.tables.creation', function () {
     });
 
     afterEach(function (done) {
-        data(config).execute({ sql: 'drop table dbo.' + table.name }).then(done, done);
+        data(config).execute({ sql: 'drop table dbo.' + tableName }).then(done, done);
     });
 
     it('properly configures tables created via mobileApp.table', function () {
         table = mobileApp.table();
-        table.name = 'mobileApp';
+        table.name = tableName;
         table.columns = { bool: 'boolean', integer: 'number', number: 'number' };
-        table.indexes = { foo: ['integer'], bar: ['number', 'integer'] };
+        table.indexes = [ ['integer'], ['number', 'integer'] ];
         return testTableCreation(table);
     });
 
     it('properly configures tables created via json object', function () {
         table = {
-            name: 'json',
+            name: tableName,
             columns: { integer: 'number' },
-            indexes: { index1: ['integer']}
+            indexes: ['integer']
         }
         return testTableCreation(table);
     });
@@ -51,8 +52,8 @@ describe('azure-mobile-apps.express.integration.tables.creation', function () {
             req.azureMobile.data.execute(statements.getIndexes(tableConfig)).then(function (indexes) {
                 req.azureMobile.data.execute(statements.getColumns(tableConfig)).then(function (columns) {
                     var config = {
-                        columns: helpers.transformColumnInfoToConfig(columns),
-                        indexes: helpers.transformIndexInfoToConfig(indexes),
+                        columns: columns,
+                        indexes: indexes
                     };
                     res.status(200).json(config);
                 });
@@ -68,8 +69,31 @@ describe('azure-mobile-apps.express.integration.tables.creation', function () {
                     .expect(200);
             })
             .then(function (res) {
-                expect(res.body.columns).to.containSubset(tableConfig.columns);
-                expect(res.body.indexes).to.containSubset(tableConfig.indexes);
+                expect(transformColumnInfoToConfig(res.body.columns)).to.containSubset(tableConfig.columns);
+                expect(transformIndexInfo(res.body.indexes)).to.containSubset(transformIndexConfig(tableConfig.indexes));
             });
     };
 });
+
+function transformColumnInfoToConfig(columnInfo) {
+    return columnInfo.reduce(function (columns, column) {
+        columns[column.name] = helpers.getPredefinedType(column.type);
+        return columns;
+    }, {});
+};
+
+function transformIndexInfo(indexInfo) {
+    return indexInfo.map(function (index) {
+        return index.index_keys;
+    });
+};
+
+function transformIndexConfig(config) {
+    return config.map(function (index) {
+        if (Array.isArray(index)) {
+            return index.join(', ');
+        } else {
+            return index;
+        }
+    });
+};

@@ -125,18 +125,4 @@ module.exports = {
                 return value;
         }
     },
-
-    transformIndexInfoToConfig: function (indexInfo) {
-        return indexInfo.reduce(function (indexes, index) {
-            indexes[index.index_name] = index.index_keys.split(', ');
-            return indexes;
-        }, {});
-    },
-
-    transformColumnInfoToConfig: function (columnInfo) {
-        return columnInfo.reduce(function (columns, column) {
-            columns[column.name] = module.exports.getPredefinedType(column.type);
-            return columns;
-        }, {});
-    }
 };
