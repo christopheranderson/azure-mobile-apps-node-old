@@ -1,7 +1,6 @@
 # VS / NTVS stuff
 *.dat
 *.suo
-*.tmp
 bin
 obj
 
@@ -32,6 +31,4 @@ build/Release
 
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
-# node_modules
-node_modules/mocha
-test/E2E/node_modules
+node_modules

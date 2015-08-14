@@ -1,15 +1,30 @@
 {
-  "name": "zumo.repository",
+  "name": "azure-mobile-apps",
   "version": "0.0.0",
-  "description": "Entire zumo repository",
-  "main": "index.js",
-  "author": {
-    "name": "Dale Anderson",
-    "email": "dalander@microsoft.com"
-  },
+  "description": "Build mobile apps with data storage, push notifications and offline sync in minutes.",
+  "main": "src/index.js",
+  "author": "Microsoft",
+  "repository": "Azure/azure-mobile-apps",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha **/*.tests.js"
   },
-  "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "jsonwebtoken": "^5.0.2",
+    "es6-promise": "^2.1.1",
+    "winston": "^1.0.1",
+    "underscore": "^1.8.3",
+    "underscore.string": "^3.1.1",
+    "mssql": "^2.1.5",
+    "body-parser": "^1.13.1",
+    "express": "^4.12.4",
+    "node-uuid": "^1.4.3",
+    "supertest-as-promised": "^2.0.1",
+    "query.js": "git://github.com/Azure/queryjs.git"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "chai-as-promised": "^5.0.0",
+    "chai-subset": "^1.0.1",
+    "mocha": "^2.2.5"
+  }
 }

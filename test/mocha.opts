@@ -1,3 +1,4 @@
-node_modules/azure-mobile-apps*/test/**/*.tests.js
+test/**/*.tests.js
 --full-trace
 --check-leaks
+--globals __core-js_shared__

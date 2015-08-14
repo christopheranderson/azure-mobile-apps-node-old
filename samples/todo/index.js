@@ -1,19 +1,20 @@
 ﻿var app = require('express')(),
     mobileApp = require('azure-mobile-apps')({
-        // data: {
-        //     provider: 'sql',
-        //     user: 'dalander',
-        //     password: 'Blah1234',
-        //     server: 'dalanderv2.database.windows.net',
-        //     database: 'todo'
-        // }
         data: {
             provider: 'sql',
-            user: 'dale',
+            user: 'dalander',
             password: 'Blah1234',
-            server: 'localhost',
-            database: 'todo'
+            server: 'dalanderv2.database.windows.net',
+            database: 'todo',
+            options: { encrypt: true }
         }
+        // data: {
+        //     provider: 'sql',
+        //     user: 'dale',
+        //     password: 'Blah1234',
+        //     server: 'localhost',
+        //     database: 'todo'
+        // }
     });
 
 mobileApp.tables.add('todoitem');
