@@ -6,7 +6,7 @@
   "author": "Microsoft",
   "repository": "Azure/azure-mobile-apps",
   "scripts": {
-    "test": "mocha **/*.tests.js"
+    "test": "mocha"
   },
   "dependencies": {
     "jsonwebtoken": "^5.0.2",
