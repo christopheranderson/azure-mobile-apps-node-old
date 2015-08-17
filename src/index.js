@@ -21,7 +21,6 @@ module.exports = function (configuration) {
     var configFile = path.resolve(configuration.basePath || defaults.basePath, configuration.configFile || defaults.configFile);
     configuration = utilities.assign(loadConfiguration.fromFile(configFile), defaults, configuration);
     loadConfiguration.fromEnvironment(configuration);
-    logger.initialise(configuration.logging);
 
     return platforms[configuration.platform](configuration);
 };

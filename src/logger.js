@@ -1,27 +1,25 @@
-var winston = require('winston');
+var winston = require('winston'),
+    logger = new (winston.Logger)();
 
-module.exports = {
-    log: winston.log,
-    info: winston.info,
-    error: winston.error,
-    debug: logAtLevel('debug'),
-    verbose: logAtLevel('verbose'),
-    initialise: initialise,
-    setLevel: setLevel
-}
-
-function initialise(config) {
+logger.initialise = function (config) {
     config = config || {};
-    setLevel(config.level);
+
+    clearTransports();
+    addTransports(config);
 }
 
-function setLevel(level) {
-    if(level)
-        winston.level = level;
+module.exports = logger;
+
+function clearTransports() {
+    Object.keys(logger.transports).forEach(function (transport) {
+        logger.remove(transport);
+    });
 }
 
-function logAtLevel(level) {
-    return function () {
-        winston.log.apply(winston, Array.prototype.concat.apply([level], arguments));
-    };
+function addTransports(config) {
+    if(config.transports) {
+        Object.keys(config.transports).forEach(function (key) {
+            logger.add(winston.transports[key], config.transports[key]);
+        });
+    }
 }
