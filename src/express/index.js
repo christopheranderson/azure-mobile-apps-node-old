@@ -25,9 +25,9 @@ module.exports = function (configuration) {
             log.debug('Attaching to express app');
             app.use(createContextMiddleware);
             app.use(authMiddleware);
+            app.use(crossOriginMiddleware);
             app.use(configuration.tableRootPath || '/tables', tableMiddleware);
             app.use(handleErrorMiddleware);
-            app.use(crossOriginMiddleware);
         }
     };
 };
