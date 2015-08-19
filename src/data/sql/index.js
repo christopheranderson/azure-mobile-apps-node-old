@@ -5,6 +5,8 @@ var statements = require('./statements'),
 
 module.exports = function (configuration) {
     log.debug('Using SQL Server data source, server: ' + configuration.server + ':' + (configuration.port || 'default') + ', user: ' + configuration.user);
+    setEncryption();
+
     var tableAccess = function (table) {
         // default is on...
         if (table.dynamicSchema === undefined || table.dynamicSchema)
@@ -103,5 +105,13 @@ module.exports = function (configuration) {
             throw error;
         }
         return results[0][0];
+    }
+
+    function setEncryption() {
+        configuration.options = configuration.options || {};
+        if(configuration.server.indexOf('database.windows.net') > -1) {
+            log.debug('SQL Azure database detected - setting connection encryption');
+            configuration.options.encrypt = true;
+        }
     }
 };

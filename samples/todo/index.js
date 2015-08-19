@@ -5,8 +5,7 @@
             user: 'dalander',
             password: 'Blah1234',
             server: 'dalanderv2.database.windows.net',
-            database: 'todo',
-            options: { encrypt: true }
+            database: 'todo'
         }
         // data: {
         //     provider: 'sql',
