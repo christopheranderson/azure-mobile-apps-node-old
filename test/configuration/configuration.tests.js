@@ -21,17 +21,10 @@ describe('azure-mobile-apps.configuration', function () {
         expect(mobileApp.configuration.value).to.equal('test');
     });
 
-    it("creates default logger with logging level ms_mobileloglevel", function () {
+    it("creates logger with logging level ms_mobileloglevel", function () {
         process.env.MS_MobileLogLevel = "verbose";
         var mobileApp = mobileApps();
-        expect(mobileApp.configuration.logging.transports).to.have.property('Console');
-        expect(mobileApp.configuration.logging.transports.Console).to.have.property('level', process.env.MS_MobileLogLevel);
-        expect(mobileApp.configuration.logging.transports.Console).to.have.property('silent', false);
-    });
 
-    it("silences logger if no ms_mobileloglevel environment variable", function () {
-        delete process.env.MS_MobileLogLevel;
-        var mobileApp = mobileApps();
-        expect(mobileApp.configuration.logging.transports.Console).to.have.property('silent', true);
+        expect(mobileApp.configuration.logging).to.have.property('level', process.env.MS_MobileLogLevel);
     });
 });
