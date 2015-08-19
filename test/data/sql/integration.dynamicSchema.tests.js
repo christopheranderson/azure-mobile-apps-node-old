@@ -6,9 +6,9 @@ var config = require('./infrastructure/config'),
     promises = require('../../../src/utilities/promises'),
     helpers = require('../../../src/data/sql/helpers'),
     expect = require('chai')
-                .use(require('chai-subset'))
-                .use(require('chai-as-promised'))
-                .expect,
+        .use(require('chai-subset'))
+        .use(require('chai-as-promised'))
+        .expect,
     table = { name: 'dynamicSchema' };
 
 describe('azure-mobile-apps.data.sql.integration.dynamicSchema', function () {
@@ -268,11 +268,12 @@ describe('azure-mobile-apps.data.sql.integration.dynamicSchema', function () {
             item = { id: '1'};
 
         return expect(dynamicSchema.execute(table, statements.insert(table, item), item))
-            .to.be.rejectedWith('Index configuration in table \'' + table.name + '\' is not an array of strings / arrays of strings.');
+            .to.be.rejectedWith('Index configuration of table \'' + table.name + '\' should be an array containing either strings or arrays of strings.');
+
     });
 
     it("throws error when indexes config is not an array", function () {
-        var table = {
+        var table = { 
             name: 'dynamicSchema',
             columns: {
                 blah: 'number'
@@ -282,7 +283,7 @@ describe('azure-mobile-apps.data.sql.integration.dynamicSchema', function () {
             item = { id: '1'};
 
         return expect(dynamicSchema.execute(table, statements.insert(table, item), item))
-            .to.be.rejectedWith('Index configuration in table \'' + table.name + '\' is not an array of strings / arrays of strings.');
+            .to.be.rejectedWith('Index configuration of table \'' + table.name + '\' should be an array containing either strings or arrays of strings.');
     });
 });
 

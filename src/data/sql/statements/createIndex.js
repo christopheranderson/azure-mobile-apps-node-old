@@ -12,7 +12,7 @@ module.exports = function (tableConfig, columns) {
         }).join(',');
     } else if (typeof columns === 'object') {
         // support index configuration object in future
-        throw new Error('Index configuration in table \'' + tableConfig.name + '\' is not an array of strings / arrays of strings.');
+        throw new Error('Index configuration of table \'' + tableConfig.name + '\' should be an array containing either strings or arrays of strings.');
     } else {
         indexName = columns;
         columnsString = '[' + columns + ']';

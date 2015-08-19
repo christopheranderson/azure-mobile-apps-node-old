@@ -42,7 +42,7 @@ module.exports = function (config) {
                             if(Array.isArray(table.indexes)) {
                                 return createIndexes();
                             } else {
-                                throw new Error('Index configuration in table \'' + table.name + '\' is not an array of strings / arrays of strings.');
+                                throw new Error('Index configuration of table \'' + table.name + '\' should be an array containing either strings or arrays of strings.');
                             }
                         }
                     });
