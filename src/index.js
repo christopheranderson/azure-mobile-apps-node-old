@@ -1,4 +1,5 @@
 ﻿var loadConfiguration = require('./configuration'),
+    environment = require('./utilities/environment'),
     logger = require('./logger'),
     utilities = require('./utilities'),
     path = require('path'),
@@ -13,7 +14,17 @@
         configFile: 'azureMobile',
         promiseConstructor: Promise,
         tableRootPath: '/tables',
-        data: { }
+        data: { },
+        logging: {
+            level: environment.debug ? 'info' : 'debug',
+            transports: {
+                Console: {
+                    colorize: true,
+                    timestamp: true,
+                    showLevel: true
+                }
+            }
+        }
     };
 
 module.exports = function (configuration) {

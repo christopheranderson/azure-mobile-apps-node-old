@@ -19,5 +19,12 @@ describe('azure-mobile-apps.configuration', function () {
     it("loads configuration from specified module", function () {
         var mobileApp = mobileApps({ basePath: __dirname, configFile: 'files/config' });
         expect(mobileApp.configuration.value).to.equal('test');
-    })
+    });
+
+    it("creates logger with logging level ms_mobileloglevel", function () {
+        process.env.MS_MobileLogLevel = "verbose";
+        var mobileApp = mobileApps();
+
+        expect(mobileApp.configuration.logging).to.have.property('level', process.env.MS_MobileLogLevel);
+    });
 });

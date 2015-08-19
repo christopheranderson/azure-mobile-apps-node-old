@@ -7,7 +7,6 @@ module.exports = function (configuration) {
     configuration = configuration || {};
     configuration.auth = configuration.auth || {};
     configuration.logging = configuration.logging || {};
-    configuration.logging.level = configuration.logging.level || (environment.debug ? 'debug' : 'info');
     configuration.cors = configuration.cors || {};
     configuration.cors.maxAge = configuration.cors.maxAge || 300;
     configuration.cors.origins = configuration.cors.origins || ['localhost'];
@@ -17,25 +16,25 @@ module.exports = function (configuration) {
 
     Object.keys(process.env).forEach(function (key) {
         switch(key.toLowerCase()) {
+            case 'ms_mobileloglevel':
+                configuration.logging.level = process.env[key];
+                break;
+
             case 'sqlazureconnstr_ms_tableconnectionstring':
             case 'ms_tableconnectionstring':
-                log.debug('Setting table connection string from environment variable ' + key);
                 configuration.data = connectionString.parse(process.env[key]);
                 break;
 
             case 'ema_runtimeurl':
-                log.debug('Setting gateway URL from environment variable ' + key);
                 configuration.auth.gatewayUrl = process.env[key];
                 break;
 
             case 'ms_signingkey':
-                log.debug('Setting signing key from environment variable ' + key);
                 configuration.auth.secret = process.env[key];
                 break;
 
             case 'ms_mobileappname':
             case 'ms_mobileservicename':
-                log.debug('Setting mobile app name from environment variable ' + key);
                 configuration.name = process.env[key];
                 break;
 
@@ -56,5 +55,6 @@ module.exports = function (configuration) {
             //     break;
         }
     });
+
     return configuration;
 };
