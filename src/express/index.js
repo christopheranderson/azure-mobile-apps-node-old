@@ -3,6 +3,7 @@ var tables = require('./tables'),
     createContext = require('./middleware/createContext'),
     authenticate = require('./middleware/authenticate'),
     handleError = require('./middleware/handleError'),
+    crossOrigin = require('./middleware/crossOrigin'),
     log = require('../logger');
 
 module.exports = function (configuration) {
@@ -11,8 +12,9 @@ module.exports = function (configuration) {
 
     var tableMiddleware = tables(configuration),
         authMiddleware = authenticate(configuration),
-        createContextMiddleware = createContext(configuration);
-        handleErrorMiddleware = handleError(configuration);
+        createContextMiddleware = createContext(configuration),
+        handleErrorMiddleware = handleError(configuration),
+        crossOriginMiddleware = crossOrigin(configuration);
 
     return {
         tables: tableMiddleware,
@@ -23,6 +25,7 @@ module.exports = function (configuration) {
             log.debug('Attaching to express app');
             app.use(createContextMiddleware);
             app.use(authMiddleware);
+            app.use(crossOriginMiddleware);
             app.use(configuration.tableRootPath || '/tables', tableMiddleware);
             app.use(handleErrorMiddleware);
         }

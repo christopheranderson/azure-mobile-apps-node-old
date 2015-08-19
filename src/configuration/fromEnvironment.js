@@ -8,6 +8,9 @@ module.exports = function (configuration) {
     configuration.auth = configuration.auth || {};
     configuration.logging = configuration.logging || {};
     configuration.logging.level = configuration.logging.level || (environment.debug ? 'debug' : 'info');
+    configuration.cors = configuration.cors || {};
+    configuration.cors.maxAge = configuration.cors.maxAge || 300;
+    configuration.cors.origins = configuration.cors.origins || ['localhost'];
 
     if(!configuration.hasOwnProperty('debug'))
         configuration.debug = environment.debug;
@@ -34,6 +37,13 @@ module.exports = function (configuration) {
             case 'ms_mobileservicename':
                 log.debug('Setting mobile app name from environment variable ' + key);
                 configuration.name = process.env[key];
+                break;
+
+            case 'ms_crossdomainwhitelist':
+                log.debug('Setting cross domain whitelist from environment variable ' + key);
+                process.env[key].split(',').forEach(function (origin) {
+                    configuration.cors.origins.push(origin);
+                });
                 break;
 
             // case 'customeconnstr_ms_notificationhubconnectionstring':
