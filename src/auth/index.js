@@ -21,6 +21,14 @@ module.exports = function (config) {
                         resolve(user(config, token, claims));
                 });
             });
+        },
+        sign: function (payload) {
+            var options = {
+                audience: config.audience || 'urn:microsoft:windows-azure:zumo',
+                issuer: config.issuer || 'urn:microsoft:windows-azure:zumo',
+                expiresInMinutes: config.expires || 1440
+            };
+            return jwt.sign(payload, key, options);
         }
     };
 };

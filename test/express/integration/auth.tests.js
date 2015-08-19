@@ -2,8 +2,9 @@ var expect = require('chai').expect,
     supertest = require('supertest-as-promised'),
     express = require('express'),
     mobileApps = require('../../../src/express'),
+    auth = require('../../../src/auth')({ secret: 'secret' }),
     secret = 'secret',
-    token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ2ZXIiOiIzIiwidWlkIjoiRmFjZWJvb2s6c29tZXVzZXJpZEBob3RtYWlsLmNvbSIsImlzcyI6InVybjptaWNyb3NvZnQ6d2luZG93cy1henVyZTp6dW1vIiwiYXVkIjoidXJuOm1pY3Jvc29mdDp3aW5kb3dzLWF6dXJlOnp1bW8iLCJleHAiOjE0NDAwMDk0MjQsIm5iZiI6MTQzNzQxNzQyNH0.9EvyzV53b2SkBCc46GR4N77NU-3SJEuYzQl8lmlp7QY',
+    token = auth.sign({ "uid": "Facebook:someuserid@hotmail.com" }),
 
     app, mobileApp;
 
