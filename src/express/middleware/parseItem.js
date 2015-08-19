@@ -1,7 +1,7 @@
 var bodyParser = require('body-parser'),
     uuid = require('node-uuid');
 
-﻿module.exports = function (table) {
+module.exports = function (table) {
     return function (req, res, next) {
         req.azureMobile.table = table;
         bodyParser.json()(req, res, callback);

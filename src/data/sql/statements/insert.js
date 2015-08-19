@@ -3,7 +3,6 @@ var helpers = require('../helpers'),
 
 module.exports = function (table, item) {
     var tableName = helpers.formatTableName(table.schema || 'dbo', table.name),
-        self = this,
         columnNames = [],
         valueParams = [],
         parameters = [];

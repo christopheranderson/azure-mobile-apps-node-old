@@ -1,5 +1,4 @@
-var auth = require('../../auth'),
-    log = require('../../logger');
+var auth = require('../../auth')
 
 module.exports = function (configuration) {
     return function (req, res, next) {

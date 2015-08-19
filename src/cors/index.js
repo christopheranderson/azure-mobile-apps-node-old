@@ -68,13 +68,13 @@ module.exports.isAllowedOrigin = function(origin) {
 
 function isAllowedHeaders(headers) {
     return headersRegex.test(headers);
-};
+}
 
 function isAllowedProtocol(protocol) {
     // This means that filesystem origins ("null") aren't supported right now
     // even if you allow "*"
     return protocol === 'http:' || protocol === 'https:' || protocol === 'ms-appx-web:';
-};
+}
 
 function isAllowedPath(path) {
     // The W3C spec isn't especially clear about host origins should be formatted,
@@ -82,7 +82,7 @@ function isAllowedPath(path) {
     // browser that sends them. But for the sake of being locked down, anything
     // beyond the slash is disallowed.
     return !path || path === '/';
-};
+}
 
 function parseOrigin(origin) {
     // included for compatibility with V1 { 'host': 'www.example.com' } origins
@@ -114,4 +114,4 @@ function buildOriginRegexes(origins) {
 
         return new RegExp('^' + origin + '$', 'i');
     });
-};
+}
