@@ -2,12 +2,14 @@ var expect = require('chai').use(require('chai-subset')).expect,
     request = require('supertest-as-promised'),
     config = require('../infrastructure/config').data(),
     express = require('express'),
-    mobileApps = require('azure-mobile-apps.express'),
-    data = require('azure-mobile-apps.data.sql'),
-    statements = require('azure-mobile-apps.data.sql/statements'),
-    queries = require('azure-mobile-apps.query'),
-    promises = require('azure-mobile-apps.core/promises'),
-    helpers = require('azure-mobile-apps.data.sql/helpers'),
+
+    mobileApps = require('../../../src/express'),
+    data = require('../../../src/data/sql'),
+    statements = require('../../../src/data/sql/statements'),
+    queries = require('../../../src/query'),
+    promises = require('../../../src/utilities/promises'),
+    helpers = require('../../../src/data/sql/helpers'),
+
     tableName = 'tableCreationTest', 
     table, app, mobileApp;
 

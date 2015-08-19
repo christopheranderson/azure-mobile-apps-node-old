@@ -1,13 +1,14 @@
 var config = require('./infrastructure/config'),
-    dynamicSchema = require('../dynamicSchema')(config),
-    statements = require('../statements'),
-    execute = require('../execute'),
+    dynamicSchema = require('../../../src/data/sql/dynamicSchema')(config),
+    statements = require('../../../src/data/sql/statements'),
+    execute = require('../../../src/data/sql/execute'),
+    queries = require('../../../src/query'),
+    promises = require('../../../src/utilities/promises'),
+    helpers = require('../../../src/data/sql/helpers'),
     expect = require('chai')
                 .use(require('chai-subset'))
                 .use(require('chai-as-promised'))
                 .expect,
-    queries = require('azure-mobile-apps.query'),
-    promises = require('azure-mobile-apps.core/promises'),
     table = { name: 'dynamicSchema' };
 
 describe('azure-mobile-apps.data.sql.integration.dynamicSchema', function () {
@@ -197,7 +198,7 @@ describe('azure-mobile-apps.data.sql.integration.dynamicSchema', function () {
     });
 
     it("creates predefined indexes", function () {
-        var table = { 
+        var table = {
             name: 'dynamicSchema',
             columns: {
                 string: 'string',
@@ -223,7 +224,7 @@ describe('azure-mobile-apps.data.sql.integration.dynamicSchema', function () {
     });
 
     it("throws error when creating index with unsupported column type", function () {
-        var table = { 
+        var table = {
             name: 'dynamicSchema',
             columns: {
                 string: 'string'
@@ -239,7 +240,7 @@ describe('azure-mobile-apps.data.sql.integration.dynamicSchema', function () {
     });
 
     it("throws error when creating index on column that does not exist", function () {
-        var table = { 
+        var table = {
             name: 'dynamicSchema',
             columns: {
                 blah: 'number'
@@ -255,7 +256,7 @@ describe('azure-mobile-apps.data.sql.integration.dynamicSchema', function () {
     });
 
     it("throws error when index columns is not an array", function () {
-        var table = { 
+        var table = {
             name: 'dynamicSchema',
             columns: {
                 blah: 'number'
@@ -271,7 +272,7 @@ describe('azure-mobile-apps.data.sql.integration.dynamicSchema', function () {
     });
 
     it("throws error when indexes config is not an array", function () {
-        var table = { 
+        var table = {
             name: 'dynamicSchema',
             columns: {
                 blah: 'number'
