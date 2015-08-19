@@ -6,6 +6,7 @@ module.exports = {
     error: winston.error,
     debug: logAtLevel('debug'),
     verbose: logAtLevel('verbose'),
+    warn: logAtLevel('warn'),
     initialise: initialise,
     setLevel: setLevel
 }

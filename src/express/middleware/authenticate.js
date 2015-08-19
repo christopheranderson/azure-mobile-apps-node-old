@@ -2,8 +2,8 @@ var auth = require('../../auth'),
     log = require('../../logger');
 
 module.exports = function (configuration) {
-    return function (req, res, next) {
-        if(configuration && configuration.auth) {
+    if(configuration && configuration.auth && Object.keys(configuration.auth).length > 0) {
+        return function (req, res, next) {
             var token = req.get('x-zumo-auth');
 
             if(token) {
@@ -24,8 +24,11 @@ module.exports = function (configuration) {
             } else {
                 next();
             }
-        } else {
+        };
+    } else {
+        log.warn('Authentication configuration was not specified. Requests will not be authenticated.');
+        return function (req, res, next) {
             next();
-        }
-    };
+        };
+    }
 };
