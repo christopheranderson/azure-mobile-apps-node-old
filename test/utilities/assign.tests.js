@@ -34,8 +34,13 @@ describe('azure-mobile-apps.utilities.assign', function () {
     });
 
     it('should return the modified target object', function () {
-        var target = {};
-        var returned = assign(target, { a: 1 });
+        var target = {},
+            returned = assign(target, { a: 1 });
         expect(returned).to.equal(target);
+    });
+
+    it('should assign values recursively', function() {
+        var target = { a: { one: 1 } };
+        expect(assign(target, { a: { two: 2 } })).to.deep.equal({ a: { one: 1, two: 2 } });
     });
 })

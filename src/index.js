@@ -14,7 +14,7 @@
         configFile: 'azureMobile',
         promiseConstructor: Promise,
         tableRootPath: '/tables',
-        data: { },
+        debug: environment.debug,
         logging: {
             level: environment.debug ? 'info' : 'debug',
             transports: {
@@ -24,7 +24,13 @@
                     showLevel: true
                 }
             }
-        }
+        },
+        cors: {
+            maxAge: 300,
+            origins: ['localhost']
+        },
+        data: { },
+        auth: { }
     };
 
 module.exports = function (configuration) {

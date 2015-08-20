@@ -4,16 +4,6 @@ var connectionString = require('./connectionString'),
 
 // determine various configuration information from environment such as web.config settings, etc.
 module.exports = function (configuration) {
-    configuration = configuration || {};
-    configuration.auth = configuration.auth || {};
-    configuration.logging = configuration.logging || {};
-    configuration.cors = configuration.cors || {};
-    configuration.cors.maxAge = configuration.cors.maxAge || 300;
-    configuration.cors.origins = configuration.cors.origins || ['localhost'];
-
-    if(!configuration.hasOwnProperty('debug'))
-        configuration.debug = environment.debug;
-
     Object.keys(process.env).forEach(function (key) {
         switch(key.toLowerCase()) {
             case 'ms_mobileloglevel':
