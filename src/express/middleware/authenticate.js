@@ -1,4 +1,5 @@
-var auth = require('../../auth')
+var auth = require('../../auth'),
+    log = require('../../logger');
 
 module.exports = function (configuration) {
     if(configuration && configuration.auth && Object.keys(configuration.auth).length > 0) {
