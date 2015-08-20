@@ -1,4 +1,5 @@
-var data = require('../../data');
+var data = require('../../data'),
+    attachOperators = require('../../query/attachOperators');
 
 module.exports = function (configuration) {
     var provider = data(configuration);
@@ -9,7 +10,7 @@ module.exports = function (configuration) {
             res: res,
             data: provider,
             tables: function (name) {
-                return provider(configuration.tables[name]);
+                return attachOperators(name, provider(configuration.tables[name]));
             }
         };
         next();
