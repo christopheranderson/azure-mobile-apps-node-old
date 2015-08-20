@@ -1,7 +1,7 @@
 var expect = require('chai').expect,
     supertest = require('supertest-as-promised'),
     express = require('express'),
-    mobileApps = require('../../../src/express'),
+    mobileApps = require('../../..'),
     app, mobileApp;
 
 describe('azure-mobile-apps.express.integration', function () {
@@ -26,24 +26,27 @@ describe('azure-mobile-apps.express.integration', function () {
                     expect(res.body).to.be.empty;
                 });
         });
+
+        function setup(debug) {
+            app = express();
+            mobileApp = mobileApps({ debug: debug });
+            var table = mobileApp.table();
+            table.read.use(function (req, res, next) { throw new Error('test'); });
+            mobileApp.tables.add('todoitem', table);
+            mobileApp.attach(app);
+        }
     });
 
     describe('version', function () {
         it('attaches version header', function () {
-            setup(false, 'version');
+            app = express();            
+            mobileApp = mobileApps();
+            mobileApp.tables.add('todoitem');
+            mobileApp.attach(app);
+
             return supertest(app)
                 .get('/tables/todoitem')
-                .expect('x-zumo-version', 'version')
-                .expect(500);
+                .expect('x-zumo-version', 'node-' + require('../../../package.json').version);
         });
     });
-
-    function setup(debug, version) {
-        app = express();
-        mobileApp = mobileApps({ debug: debug, version: version });
-        var table = mobileApp.table();
-        table.read.use(function (req, res, next) { throw new Error('test'); });
-        mobileApp.tables.add('todoitem', table);
-        mobileApp.attach(app);
-    }
 });
