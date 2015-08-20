@@ -1,6 +1,6 @@
 var queries = require('../../query');
 
-﻿// parse OData query from querystring into queryjs query object and attach to request object
+// parse OData query from querystring into queryjs query object and attach to request object
 module.exports = function (table) {
     return function (req, res, next) {
         var context = req.azureMobile;

@@ -6,7 +6,8 @@
   "author": "Microsoft",
   "repository": "Azure/azure-mobile-apps",
   "scripts": {
-    "test": "mocha"
+    "test": "npm run lint & mocha",
+    "lint": "jshint src"
   },
   "dependencies": {
     "jsonwebtoken": "^5.0.2",
@@ -25,6 +26,7 @@
     "chai": "^3.0.0",
     "chai-as-promised": "^5.0.0",
     "chai-subset": "^1.0.1",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "jshint": "^2.8.0"
   }
 }

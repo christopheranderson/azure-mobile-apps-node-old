@@ -26,11 +26,10 @@ function ctor(expression) {
     this.token = {};
     this._setTextPos(0);
     this._nextToken();
-};
+}
 
 var ODataParser = types.defineClass(ctor, {
     parse: function () {
-        var exprPos = this.token.pos;
         var expr = this._parseExpression();
 
         this._validateToken('End', 'Syntax error');
@@ -100,8 +99,6 @@ var ODataParser = types.defineClass(ctor, {
             var opId = this.token.id;
             this._nextToken();
             var right = this._parseAdditive();
-
-            var isEquality = opId == 'Equal' || opId == 'NotEqual';
 
             switch (opId) {
                 case 'Equal':
@@ -226,7 +223,6 @@ var ODataParser = types.defineClass(ctor, {
     },
 
     _parseMappedFunction: function (mappedMember, errorPos) {
-        var type = mappedMember.type;
         var mappedMemberName = mappedMember.memberName;
         var args;
         var instance = null;
@@ -594,7 +590,6 @@ var ODataParser = types.defineClass(ctor, {
 
     _parseStringLiteral: function () {
         this._validateToken('StringLiteral');
-        var quote = this.token.text[0];
         // Unwrap string (remove surrounding quotes) and unwrap escaped quotes.
         var s = this.token.text.substr(1, this.token.text.length - 2).replace(/''/g, "'");
 
