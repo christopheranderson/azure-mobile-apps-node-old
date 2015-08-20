@@ -17,7 +17,7 @@
         debug: environment.debug,
         version: 'node-' + require('../package.json').version,
         logging: {
-            level: environment.debug ? 'info' : 'debug',
+            level: environment.debug ? 'debug' : 'info',
             transports: {
                 Console: {
                     colorize: true,
