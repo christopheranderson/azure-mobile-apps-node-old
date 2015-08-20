@@ -1,6 +1,5 @@
 var connectionString = require('./connectionString'),
-    environment = require('../utilities/environment'),
-    log = require('../logger');
+    environment = require('../utilities/environment');
 
 // determine various configuration information from environment such as web.config settings, etc.
 module.exports = function (configuration) {
@@ -29,7 +28,6 @@ module.exports = function (configuration) {
                 break;
 
             case 'ms_crossdomainwhitelist':
-                log.debug('Setting cross domain whitelist from environment variable ' + key);
                 process.env[key].split(',').forEach(function (origin) {
                     configuration.cors.origins.push(origin);
                 });
@@ -37,11 +35,9 @@ module.exports = function (configuration) {
 
             // case 'customeconnstr_ms_notificationhubconnectionstring':
             // case 'ms_notificationhubconnectionstring':
-            //     log.debug('Setting notification hub connection string from environment variable ' + key);
             //     break;
             //
             // case 'mS_NotificationHubName':
-            //     log.debug('Setting notification hub name from environment variable ' + key);
             //     break;
         }
     });
