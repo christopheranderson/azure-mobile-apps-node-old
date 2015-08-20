@@ -26,14 +26,24 @@ describe('azure-mobile-apps.express.integration', function () {
                     expect(res.body).to.be.empty;
                 });
         });
-
-        function setup(debug) {
-            app = express();
-            mobileApp = mobileApps({ debug: debug });
-            var table = mobileApp.table();
-            table.read.use(function (req, res, next) { throw new Error('test'); });
-            mobileApp.tables.add('todoitem', table);
-            mobileApp.attach(app);
-        }
     });
+
+    describe('version', function () {
+        it('attaches version header', function () {
+            setup(false, 'version');
+            return supertest(app)
+                .get('/tables/todoitem')
+                .expect('x-zumo-version', 'version')
+                .expect(500);
+        });
+    });
+
+    function setup(debug, version) {
+        app = express();
+        mobileApp = mobileApps({ debug: debug, version: version });
+        var table = mobileApp.table();
+        table.read.use(function (req, res, next) { throw new Error('test'); });
+        mobileApp.tables.add('todoitem', table);
+        mobileApp.attach(app);
+    }
 });

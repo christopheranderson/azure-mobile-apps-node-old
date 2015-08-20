@@ -15,6 +15,7 @@
         promiseConstructor: Promise,
         tableRootPath: '/tables',
         debug: environment.debug,
+        version: 'node-' + require('../package.json').version,
         logging: {
             level: environment.debug ? 'info' : 'debug',
             transports: {
