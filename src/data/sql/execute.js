@@ -22,21 +22,23 @@ module.exports = function (config, statement) {
 
         request.multiple = statement.multiple;
 
-        statement.parameters && statement.parameters.forEach(function (parameter) {
-            var type = parameter.type || helpers.getMssqlType(parameter.value);
-            if(type)
-                request.input(parameter.name, type, parameter.value);
-            else
-                request.input(parameter.name, parameter.value);
-        });
+        if(statement.parameters) {
+            statement.parameters.forEach(function (parameter) {
+                var type = parameter.type || helpers.getMssqlType(parameter.value);
+                if(type)
+                    request.input(parameter.name, type, parameter.value);
+                else
+                    request.input(parameter.name, parameter.value);
+            });
+        }
 
-        return request.query(statement.sql).catch(function (error) {
-            if(error.number === 2627) {
+        return request.query(statement.sql).catch(function (err) {
+            if(err.number === 2627) {
                 var error = new Error('An item with the same ID already exists');
                 error.duplicate = true;
                 throw error;
             }
-            return promises.rejected(error);
+            return promises.rejected(err);
         });
     }
 };

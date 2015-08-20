@@ -1,5 +1,4 @@
-var url = require('url'),
-    cors = require('../../cors');
+var cors = require('../../cors');
 
 module.exports = function(configuration) {
     if (configuration) {

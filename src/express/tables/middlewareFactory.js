@@ -1,5 +1,4 @@
-﻿var express = require('express'),
-    parseQuery = require('../middleware/parseQuery'),
+﻿var parseQuery = require('../middleware/parseQuery'),
     parseItem = require('../middleware/parseItem'),
     renderResults = require('../middleware/renderResults'),
     authorise = require('../middleware/authorise');
