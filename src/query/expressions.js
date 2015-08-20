@@ -33,6 +33,18 @@ module.exports = {
         },
         null),
 
+    FloatConstant: types.deriveClass(
+        Expression,
+        function (value) {
+            this.value = value;
+            this.expressionType = 'FloatConstant';
+        }, {
+            accept: function (visitor) {
+                return visitor.visitFloatConstant(this);
+            }
+        },
+        null),
+
     Binary: types.deriveClass(
         Expression,
         function (left, right, expressionType) {

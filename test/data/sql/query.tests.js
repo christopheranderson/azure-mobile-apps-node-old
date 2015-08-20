@@ -1,7 +1,17 @@
 var formatSql = require('../../../src/data/sql/query/format'),
-    equal = require('assert').equal;
+    equal = require('assert').equal,
+    mssql = require('mssql');
 
 describe('azure-mobile-apps.data.sql.query', function () {
+    it("preserves float parameters with zeroes", function () {
+        var query = {
+            table: 'intIdMovies',
+            filters: 'ceiling((Duration div 60.0)) eq 2.0'
+        },
+            statement = formatSql(query, { schemaName: 'testapp'});
+        equal(statement.parameters[1].type, mssql.FLOAT);
+    });
+
     it("generates correct parameter names", function () {
         var query = {
                 table: 'books',

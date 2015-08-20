@@ -510,12 +510,13 @@ var ODataParser = types.defineClass(ctor, {
         }
 
         var value = parseFloat(text);
+
         if (isNaN(value) || (value != text)) {
             throw this._parseError(_.sprintf("Invalid real literal '%s'", text));
         }
 
         this._nextToken();
-        return new expressions.Constant(value);
+        return new expressions.FloatConstant(value);
     },
 
     _parseParenExpression: function () {
