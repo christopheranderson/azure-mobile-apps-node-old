@@ -22,9 +22,7 @@ describe('azure-mobile-apps.express.integration.api', function () {
             res.status(200).end();
         });
 
-        return request(app)
-            .get('/api/test')
-            .expect(200);
+        return request(app).get('/api/test').expect(200);
     });
 
     it('allows table operations', function () {
@@ -48,12 +46,29 @@ describe('azure-mobile-apps.express.integration.api', function () {
             .get('/api/createTest')
             .expect(200)
             .then(function () {
-                return request(app)
-                    .get('/api/getTest')
-                    .expect(200);
+                return request(app).get('/api/getTest').expect(200);
             })
             .then(function (res) {
                 expect(res.body).to.containSubset([{ id: '1', value: 'test1' }]);
             });
     });
+
+    it('attaches query operators to data access objects', function () {
+        mobileApp.tables.add('apiTest');
+        mobileApp.attach(app);
+
+        app.get('/api/test', function (req, res, next) {
+            var table = req.azureMobile.tables('apiTest');
+            table.insert({ id: '1', value: 1 })
+                .then(function () {
+                    return table.where({ id: '1' }).read();
+                })
+                .then(function (results) {
+                    expect(results).to.containSubset([{ id: '1', value: 1 }]);
+                    res.status(200).end();
+                });
+        });
+
+        return request(app).get('/api/test').expect(200);
+    })
 });
