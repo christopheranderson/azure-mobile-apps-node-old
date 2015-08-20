@@ -14,6 +14,10 @@ module.exports = types.defineClass(null, {
         return expr;
     },
 
+    visitFloatConstant: function (expr) {
+        return expr;
+    },
+
     visitBinary: function (expr) {
         var left = null;
         var right = null;

@@ -1,4 +1,4 @@
-var queries = require('azure-mobile-apps/query'),
+var queries = require('../../src/query'),
     bodyParser = require('body-parser');
 
 exports.register = function(app) {

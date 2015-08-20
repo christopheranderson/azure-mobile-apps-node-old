@@ -1,7 +1,7 @@
 var bodyParser = require('body-parser'),
     xmlBodyParser = require('express-xml-bodyparser'),
     app = require('express')(),
-    mobileApp = require('azure-mobile-apps')({
+    mobileApp = require('../..')({
         data: {
             provider: 'sql',
             user: 'azure-mobile-apps-test',
