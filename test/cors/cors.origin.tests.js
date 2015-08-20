@@ -1,15 +1,16 @@
 var expect = require('chai').expect,
-    cors = require('../../src/cors');
+    corsModule = require('../../src/cors');
 
 describe('azure-mobile-apps.cors.origin', function() {
     it('allows protocol/port variations on an allowed hostname', function() {
-        cors.initialise({
+        var cors = corsModule({
             origins: [{
                 host: 'some.site.example.com'
             }, {
                 host: 'wildcard.*.example.com'
             }]
         });
+
         expect(cors.isAllowedOrigin('http://some.site.example.com')).to.be.true;
         expect(cors.isAllowedOrigin('http://wildcard.any-thing.here.example.com')).to.be.true;
         expect(cors.isAllowedOrigin('https://some.site.example.com')).to.be.true;
@@ -25,7 +26,7 @@ describe('azure-mobile-apps.cors.origin', function() {
     });
 
     it('allows and ignores embedded username/passwords in an allowed hostname', function() {
-        cors.initialise({
+        var cors = corsModule({
             origins: [{
                 host: 'some.site.example.com'
             }, {
@@ -37,7 +38,7 @@ describe('azure-mobile-apps.cors.origin', function() {
     });
 
     it('disallows disallowed hostnames', function() {
-        cors.initialise({
+        var cors = corsModule({
             origins: [{
                 host: 'some.site.example.com'
             }, {
@@ -57,7 +58,7 @@ describe('azure-mobile-apps.cors.origin', function() {
 
     it('allows null filesystem origins when null is specified', function() {
         // This whitelist allows any legal http/https hostname
-        cors.initialise({
+        var cors = corsModule({
             origins: [{
                 host: 'null'
             }]
@@ -69,7 +70,7 @@ describe('azure-mobile-apps.cors.origin', function() {
 
     it('allows only specific origins when * is specified', function() {
         // This whitelist allows any legal http/https hostname
-        cors.initialise({
+        var cors = corsModule({
             origins: [{
                 host: '*'
             }]
@@ -77,7 +78,7 @@ describe('azure-mobile-apps.cors.origin', function() {
 
         expect(cors.isAllowedOrigin('http://foo.com')).to.be.true;
         expect(cors.isAllowedOrigin('https://bar.com')).to.be.true;
-        expect(cors.isAllowedOrigin('ms-appx-web://mysillyapp.com')).to.be.true; // iframe in Windows Modern Apps uses this                        
+        expect(cors.isAllowedOrigin('ms-appx-web://mysillyapp.com')).to.be.true; // iframe in Windows Modern Apps uses this
         expect(cors.isAllowedOrigin('no.protocol.example.com')).to.be.false;
         expect(cors.isAllowedOrigin('unknown://example.com')).to.be.false;
         expect(cors.isAllowedOrigin('null')).to.be.false; // Most browsers send this for filesystem origins
@@ -87,7 +88,7 @@ describe('azure-mobile-apps.cors.origin', function() {
 
     it('allows a trailing slash in an origin, but no other path', function() {
         // This whitelist allows any legal http/https hostname
-        cors.initialise({
+        var cors = corsModule({
             origins: [{
                 host: '*'
             }]
@@ -100,7 +101,7 @@ describe('azure-mobile-apps.cors.origin', function() {
     });
 
     it('does not allow anything when whitelist is explicitly empty', function() {
-        cors.initialise({
+        var cors = corsModule({
             origins: []
         });
         expect(cors.isAllowedOrigin('http://localhost')).to.be.false;
