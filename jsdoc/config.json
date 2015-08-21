@@ -1,0 +1,8 @@
+{
+    "sources": {
+        "include": [".."]
+    },
+    "opts": {
+        "destination": "./out"
+    }
+}
