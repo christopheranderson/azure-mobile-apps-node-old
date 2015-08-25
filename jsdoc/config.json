@@ -1,8 +1,10 @@
 {
-    "sources": {
-        "include": [".."]
+    "source": {
+        "include": ["."],
+        "excludePattern": "node_modules"
     },
     "opts": {
-        "destination": "./out"
+        "destination": "jsdoc/out",
+        "recurse": true
     }
 }

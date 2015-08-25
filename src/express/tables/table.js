@@ -1,7 +1,12 @@
+/**
+@module azure-mobile-apps/express/tables/table
+@description Provides helper functions for configuring a table
+*/
 var middlewareFactory = require('./middlewareFactory'),
     executeOperation = require('../middleware/executeOperation'),
     utilities = require('../../utilities'),
     express = require('express');
+
 
 module.exports = function (definition) {
     var router = express.Router();
@@ -19,6 +24,7 @@ module.exports = function (definition) {
     table.execute = router;
     table.operation = executeOperation(table.operations);
 
+    /** Specify middleware to be executed for every request against the table */
     table.use = attachMiddleware('execute');
     table.read = attachOperation('get');
     table.update = attachOperation('patch');

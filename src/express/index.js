@@ -1,3 +1,7 @@
+/**
+@module azure-mobile-apps/express
+@description Stuff for working with express
+*/
 var tables = require('./tables'),
     table = require('./tables/table'),
     createContext = require('./middleware/createContext'),
@@ -19,10 +23,23 @@ module.exports = function (configuration) {
         versionMiddleware = version(configuration);
 
     return {
+        /** @prop {Object} tables - Contains functions to register table definitions with azure-mobile-apps */
         tables: tableMiddleware,
+        /**
+        Factory function for creating table definition objects
+        @function
+        @returns {module:azure-mobile-apps/express/tables/table}
+        */
         table: table,
-        auth: authMiddleware,
+        /**
+        Top level configuration that azure-mobile-apps was configured with
+        @type {configuration}
+        */
         configuration: configuration,
+        /**
+        Attach default azure-mobile-apps middleware to an express application
+        @param {Express} app Express application to attach to
+        */
         attach: function (app) {
             log.debug('Attaching to express app');
             app.use(versionMiddleware);
