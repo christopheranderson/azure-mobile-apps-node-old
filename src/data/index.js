@@ -18,7 +18,7 @@ module.exports = function (configuration) {
 /**
 @function read
 @description Execute a query against the table.
-@param {Query} query The query to execute
+@param {module:queryjs/Query} query The query to execute
 @returns A promise that yields an array. The first element is the results of the query.
 If the includeTotalCount option was set on the query, the second element is the total number of records.
 */

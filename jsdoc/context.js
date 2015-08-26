@@ -1,7 +1,7 @@
 /**
 @typedef context
 @description This object is attached to the express request object as the azureMobile property.
-@property {query.js/Query} query The parsed OData query if provided and the parseQuery middleware has been executed
+@property {module:queryjs/Query} query The parsed OData query if provided and the parseQuery middleware has been executed
 @property {string|number} id The ID associated with the request if provided and the parseQuery middleware has been executed
 @property {object} item The item being inserted or updated if provided and the parseItem middleware has been executed
 @property {express.Request} req The current express {@link http://expressjs.com/4x/api.html#req request object}

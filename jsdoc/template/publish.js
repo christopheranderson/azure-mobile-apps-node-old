@@ -652,6 +652,7 @@ exports.publish = function(taffyData, opts, tutorials) {
 function cleanLinkTo(originalLinkTo) {
     return function (longname, linkText, cssClass, fragmentId) {
         linkText = linkText || longname;
+        linkText = linkText.replace('module:', '');
         if(linkText === 'azure-mobile-apps')
             linkText = '/';
         if(linkText.indexOf('azure-mobile-apps/') > -1)
@@ -661,5 +662,7 @@ function cleanLinkTo(originalLinkTo) {
 }
 
 function sortByName(a, b) {
-    return a.name > b.name;
+    if(a.name > b.name) return 1;
+    if(a.name < b.name) return -1;
+    return 0;
 }

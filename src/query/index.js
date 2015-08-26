@@ -1,6 +1,6 @@
 /**
 @module azure-mobile-apps/query
-@description Functionality for creating query.js objects
+@description Functionality for creating {@link https://github.com/Azure/queryjs query.js} objects
 */
 var Query = require('query.js').Query;
 
@@ -29,7 +29,7 @@ module.exports = {
     },
     /**
     Converts a query to an object containing OData query information
-    @param {Query} query - The query.js Query object to convert
+    @param {module:queryjs/Query} query - The query.js Query object to convert
     */
     toOData: function (query) {
         return Query.Providers.OData.toOData(query)

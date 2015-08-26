@@ -2,12 +2,12 @@ var winston = require('winston'),
     logger = new (winston.Logger)();
 
 /**
-The azure-mobile-apps logging framework
+The azure-mobile-apps logging framework.
 @module azure-mobile-apps/logger
 */
 
 /**
-Exports an instance of a winston logger.
+Exports an instance of a winston logger with the additional members described below.
 @see {@link https://github.com/winstonjs/winston}
 */
 module.exports = logger;
