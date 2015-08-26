@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var bodyParser = require('body-parser'),
     xmlBodyParser = require('express-xml-bodyparser'),
     app = require('express')(),

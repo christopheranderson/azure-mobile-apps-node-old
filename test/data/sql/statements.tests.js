@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 // there should be more tests here, but SQL tests can be fragile
 // full coverage should be provided by integration tests
 

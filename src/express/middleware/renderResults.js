@@ -1,3 +1,7 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
+
 ﻿// render results attached to response object to the client in JSON format
 module.exports = function (req, res, next) {
     if(res.results) {

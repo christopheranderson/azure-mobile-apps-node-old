@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 /**
 @module queryjs/Query
 @description Provides an API for defining queries against arbitrary data sources.

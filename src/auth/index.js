@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 /**
 @module azure-mobile-apps/auth
 @description Helper functions for working with JWT tokens

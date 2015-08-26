@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 ﻿var expect = require('chai').expect,
     tables = require('../../../src/express/tables');
 

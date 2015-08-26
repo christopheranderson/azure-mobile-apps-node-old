@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 /**
 The azure-mobile-apps module is the Nodejs implementation of Azure Mobile Apps
 @module azure-mobile-apps

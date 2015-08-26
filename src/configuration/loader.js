@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 ﻿var path = require('path')
     fs = require('fs');
 
@@ -5,7 +8,7 @@ module.exports = {
     loadPath: function (targetPath, basePath) {
         basePath = basePath || path.dirname(module.parent.filename);
         var fullPath = path.resolve(basePath, targetPath);
-        
+
         // this won't work with other extensions (e.g. .ts, .coffee)
         // perhaps we should use require.resolve here instead - also enables loading modules in other packages
         if (!fs.existsSync(fullPath)) {

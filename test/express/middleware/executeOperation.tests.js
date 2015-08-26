@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 ﻿var executeOperation = require('../../../src/express/middleware/executeOperation'),
     promises = require('../../../src/utilities/promises'),
     data = require('../infrastructure/data')([{ id: 1, value: 'test' }]),

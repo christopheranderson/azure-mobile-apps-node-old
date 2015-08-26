@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var types = module.exports = {
     curry: function (fn) {
         var slice = Array.prototype.slice,

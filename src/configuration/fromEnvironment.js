@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var connectionString = require('./connectionString'),
     environment = require('../utilities/environment');
 
@@ -9,6 +12,7 @@ module.exports = function (configuration) {
                 configuration.logging.level = process.env[key];
                 break;
 
+            case 'sqlconnstr_ms_tableconnectionstring':
             case 'sqlazureconnstr_ms_tableconnectionstring':
             case 'ms_tableconnectionstring':
                 configuration.data = connectionString.parse(process.env[key]);

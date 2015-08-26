@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var helpers = require('../helpers'),
     mssql = require('mssql'),
     _ = require('underscore.string');

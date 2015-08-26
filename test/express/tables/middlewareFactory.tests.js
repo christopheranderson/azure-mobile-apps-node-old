@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 ﻿var factory = require('../../../src/express/tables/middlewareFactory'),
     executeOperation = require('../../../src/express/middleware/executeOperation'),
     express = require('express'),

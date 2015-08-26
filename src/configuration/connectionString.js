@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 module.exports = {
     // parse an ODBC or ADO.NET connection string into
     parse: function (connectionString) {

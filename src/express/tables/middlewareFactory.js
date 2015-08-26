@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 ﻿var parseQuery = require('../middleware/parseQuery'),
     parseItem = require('../middleware/parseItem'),
     renderResults = require('../middleware/renderResults'),

@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var expect = require('chai').expect,
     supertest = require('supertest'),
     express = require('express'),
@@ -36,7 +39,7 @@ describe('azure-mobile-apps.express.integration.tables.configuration', function 
             value = 'test';
             next();
         });
-        
+
         mobileApp.tables.add('todoitem', table);
         mobileApp.attach(app);
 

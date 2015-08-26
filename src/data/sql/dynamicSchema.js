@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var statements = require('./statements'),
     execute = require('./execute'),
     promises = require('../../utilities/promises'),

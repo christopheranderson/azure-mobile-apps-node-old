@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var index = require('../../../src/data/sql'),
     queries = require('../../../src/query'),
     config = require('./infrastructure/config'),

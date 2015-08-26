@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 ﻿var table = require('../../../src/express/tables/table'),
     executeOperation = require('../../../src/express/middleware/executeOperation'),
     expect = require('chai').expect,

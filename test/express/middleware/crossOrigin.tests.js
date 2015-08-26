@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var middleware = require('../../../src/express/middleware/crossOrigin'),
     expect = require('chai').expect,
     accessControlRequestHeader = 'access-control-request-headers',
@@ -6,13 +9,13 @@ var middleware = require('../../../src/express/middleware/crossOrigin'),
     accessControlAllowHeadersHeader = 'Access-Control-Allow-Headers',
     accessControlMaxAgeHeader = 'Access-Control-Max-Age',
     expectedAllowedMethods = 'GET, PUT, PATCH, POST, DELETE, OPTIONS';
-    config = { 
+    config = {
         cors: {
             maxAge: 6000,
             origins: ['localhost', { host: '*.v1.com' }, 'test.*.net']
         }
     },
-    req = { 
+    req = {
         method: 'GET',
         headers: { },
         get: function (key) {
@@ -37,7 +40,7 @@ describe('azure-mobile-apps.express.middleware.crossOrigin', function () {
         req.headers.origin = 'https://www.v1.com';
         req.headers[accessControlRequestHeader] = 'list, of, headers';
         req.method = 'OPTIONS';
-        
+
         middleware(config)(req, res, function () {
             expect(res.headers[accessControlAllowOriginHeader]).to.equal(req.headers.origin);
             expect(res.headers[accessControlAllowMethodsHeader]).to.equal(expectedAllowedMethods);
@@ -48,7 +51,7 @@ describe('azure-mobile-apps.express.middleware.crossOrigin', function () {
 
     it("ignores non matching request", function () {
         req.headers.origin = 'www.v2.com';
-        
+
         middleware(config)(req, res, function () {
             expect(res.headers[accessControlAllowOriginHeader]).to.be.undefined;
             expect(res.headers[accessControlAllowMethodsHeader]).to.be.undefined;

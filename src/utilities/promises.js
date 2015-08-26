@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 ﻿var constructor = typeof Promise === 'undefined'
     ? require('es6-promise').Promise
     : Promise;

@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 module.exports = function (req, res, next) {
     var format = req.query.format || 'json';
     var status = req.query.status || 200;

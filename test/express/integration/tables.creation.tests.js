@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var expect = require('chai').use(require('chai-subset')).expect,
     request = require('supertest-as-promised'),
     config = require('../infrastructure/config').data(),
@@ -8,7 +11,7 @@ var expect = require('chai').use(require('chai-subset')).expect,
     queries = require('../../../src/query'),
     promises = require('../../../src/utilities/promises'),
     helpers = require('../../../src/data/sql/helpers'),
-    tableName = 'tableCreationTest', 
+    tableName = 'tableCreationTest',
     table, app, mobileApp;
 
 describe('azure-mobile-apps.express.integration.tables.creation', function () {

@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var expect = require('chai').expect,
     supertest = require('supertest-as-promised'),
     express = require('express'),
@@ -39,7 +42,7 @@ describe('azure-mobile-apps.express.integration', function () {
 
     describe('version', function () {
         it('attaches version header', function () {
-            app = express();            
+            app = express();
             mobileApp = mobileApps();
             mobileApp.tables.add('todoitem');
             mobileApp.attach(app);

@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var queries = require('../../query');
 
 // parse OData query from querystring into queryjs query object and attach to request object

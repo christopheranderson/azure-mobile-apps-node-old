@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 /**
 @module azure-mobile-apps/query
 @description Functionality for creating {@link https://github.com/Azure/queryjs query.js} objects

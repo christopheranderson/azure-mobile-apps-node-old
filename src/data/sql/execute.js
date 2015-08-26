@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var mssql = require('mssql'),
     helpers = require('./helpers'),
     promises = require('../../utilities/promises'),

@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var expect = require('chai').expect,
     supertest = require('supertest-as-promised'),
     express = require('express'),
@@ -13,7 +16,7 @@ var expect = require('chai').expect,
 
 describe('azure-mobile-apps.express.integration.cors', function () {
     beforeEach(function () {
-        config = { 
+        config = {
             cors: {
                 maxAge: 6000,
                 origins: ['localhost', { host: '*.v1.com' }, 'test.*.net']

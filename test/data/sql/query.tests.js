@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var formatSql = require('../../../src/data/sql/query/format'),
     equal = require('assert').equal,
     mssql = require('mssql');

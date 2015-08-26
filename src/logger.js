@@ -1,11 +1,13 @@
-var winston = require('winston'),
-    logger = new (winston.Logger)();
-
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 /**
 The azure-mobile-apps logging framework.
 @module azure-mobile-apps/logger
 */
-
+var winston = require('winston'),
+    logger = new (winston.Logger)();
+    
 /**
 Exports an instance of a winston logger with the additional members described below.
 @see {@link https://github.com/winstonjs/winston}

@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 // translate the queryjs Query object into the odata format that our formatter expects
 var queries = require('../../../query'),
     format = require('../query/format');

@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var attach = require('../../src/query/attachOperators'),
     expect = require('chai').use(require('chai-subset')).expect;
 

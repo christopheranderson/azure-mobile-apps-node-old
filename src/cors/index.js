@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 /**
 @module azure-mobile-apps/cors
 @description Helper functions for negotiating cross-origin resource sharing requests

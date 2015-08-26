@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var middleware = require('../../../src/express/middleware/authenticate'),
     auth = require('../../../src/auth')({ secret: 'secret' }),
     expect = require('chai').use(require('chai-subset')).expect,

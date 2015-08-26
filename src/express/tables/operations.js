@@ -1,3 +1,7 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
+
 // translate http requests into a data operation
 module.exports = {
     get: function (req, res) {

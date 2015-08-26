@@ -1,3 +1,6 @@
+// ----------------------------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// ----------------------------------------------------------------------------
 var config = require('./infrastructure/config'),
     dynamicSchema = require('../../../src/data/sql/dynamicSchema')(config),
     statements = require('../../../src/data/sql/statements'),
@@ -273,7 +276,7 @@ describe('azure-mobile-apps.data.sql.integration.dynamicSchema', function () {
     });
 
     it("throws error when indexes config is not an array", function () {
-        var table = { 
+        var table = {
             name: 'dynamicSchema',
             columns: {
                 blah: 'number'
