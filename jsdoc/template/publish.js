@@ -296,7 +296,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
     if (items.length) {
         var itemsNav = '';
 
-        items.forEach(function(item) {
+        items.sort(sortByName).forEach(function(item) {
             if ( !hasOwnProp.call(item, 'longname') ) {
                 itemsNav += '<li>' + linktoFn('', item.name) + '</li>';
             }
@@ -647,6 +647,8 @@ exports.publish = function(taffyData, opts, tutorials) {
     saveChildren(tutorials);
 };
 
+
+// customisations over default template start here - these functions are consumed in the code
 function cleanLinkTo(originalLinkTo) {
     return function (longname, linkText, cssClass, fragmentId) {
         linkText = linkText || longname;
@@ -656,4 +658,8 @@ function cleanLinkTo(originalLinkTo) {
             linkText = linkText.substring(linkText.indexOf('azure-mobile-apps/') + 18);
         return originalLinkTo(longname, linkText, cssClass, fragmentId);
     }
+}
+
+function sortByName(a, b) {
+    return a.name > b.name;
 }
