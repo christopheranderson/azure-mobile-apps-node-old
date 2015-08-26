@@ -53,6 +53,11 @@ table.read(function (context) {
     table.read = attachOperation('get');
 
     /**
+    @callback tableOperationHandler
+    @param {context} context The current azure-mobile-apps context object
+    */
+
+    /**
     Identical syntax and semantics to the read function, but for update operations.
     @function update
     */
