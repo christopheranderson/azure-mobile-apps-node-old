@@ -1,7 +1,16 @@
+/**
+@module azure-mobile-apps/express/tables
+@description Provides functionality for registering tables with azure-mobile-apps.
+*/
 var loader = require('../../configuration/loader'),
     table = require('./table'),
     tableRouter = require('./tableRouter');
 
+/**
+Create an instance of an express middleware function for routing and handling table requests.
+@param {configuration} configuration
+@returns An express middleware function with additional members described below.
+*/
 module.exports = function (configuration) {
     configuration.tables = configuration.tables || {};
 
@@ -10,7 +19,12 @@ module.exports = function (configuration) {
             router(req, res, next);
         };
 
-    // allow configuration of a table by zumoInstance.tables.add('table')
+    /**
+    Register a single table with the specified definition.
+    @function add
+    @param {string} name - The name of the table. HTTP operations will be exposed on this route.
+    @param {tableDefinition|module:azure-mobile-apps/express/tables/table} definition - The definition for the table.
+    */
     middleware.add = function (name, definition) {
         if(!definition || !definition.createMiddleware)
             definition = table(definition);
@@ -18,7 +32,13 @@ module.exports = function (configuration) {
         router.add(name, definition);
     };
 
-    // allow configuration of tables by zumoInstance.tables.import('path/to/config')
+    /**
+    Import a file or folder of modules containing table definitions
+    @function import
+    @param {string} path Path to a file or folder containing modules that export either a {@link tableDefinition} or
+    {@link module:azure-mobile-apps/express/tables/table table object}.
+    The path is relative to configuration.basePath that defaults to the location of your startup module.
+    */
     middleware.import = function (path) {
         var tables = loader.loadPath(path, configuration.basePath);
         Object.keys(tables).forEach(function (tableName) {

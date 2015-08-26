@@ -10,8 +10,7 @@ module.exports = function (configuration, router, executeOperation) {
     // add operation specific middleware configured by the user
     configureOperation('read', 'get', [parseQuery(configuration)], [renderResults], [defaultRoute, idRoute]);
     configureOperation('insert', 'post', [parseItem(configuration)], [renderResults], [defaultRoute]);
-    // post with an ID is an undelete operation
-    configureOperation('insert', 'post', [parseQuery(configuration)], [renderResults], [idRoute]);
+    configureOperation('insert', 'post', [parseQuery(configuration)], [renderResults], [idRoute]); // post with an ID is an undelete operation
     configureOperation('update', 'patch', [parseItem(configuration)], [renderResults], [defaultRoute, idRoute]);
     configureOperation('delete', 'delete', [parseQuery(configuration)], [renderResults], [defaultRoute, idRoute]);
 
@@ -27,7 +26,9 @@ module.exports = function (configuration, router, executeOperation) {
                 ? [executeOperation]
                 : operationMiddleware;
 
+        // hook up the authorise middleware if specified
         if (configuration.authorise || (configuration[operation] && configuration[operation].authorise)) middleware.unshift(authorise);
+
         if (pre) middleware.unshift.apply(middleware, pre);
         if (post) middleware.push.apply(middleware, post);
 

@@ -1,9 +1,21 @@
+/**
+@module azure-mobile-apps/query
+@description Functionality for creating {@link https://github.com/Azure/queryjs query.js} objects
+*/
 var Query = require('query.js').Query;
 
 module.exports = {
+    /**
+    Creates a new query against the specified table
+    @param {string} table - Name of the table to query
+    */
     create: function (table) {
         return new Query(table);
     },
+    /**
+    Creates a query from an HTTP request object that encapsulates an OData query
+    @param {express.Request} req The HTTP request object
+    */
     fromRequest: function(req) {
         var url = req.path;
         return Query.Providers.OData.fromOData(
@@ -15,6 +27,10 @@ module.exports = {
             req.query.$select,
             req.query.$inlinecount === 'allpages')
     },
+    /**
+    Converts a query to an object containing OData query information
+    @param {module:queryjs/Query} query - The query.js Query object to convert
+    */
     toOData: function (query) {
         return Query.Providers.OData.toOData(query)
     }

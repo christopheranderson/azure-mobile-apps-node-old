@@ -1,11 +1,28 @@
+/**
+@module azure-mobile-apps/cors
+@description Helper functions for negotiating cross-origin resource sharing requests
+*/
 var url = require('url');
 
+/**
+Create an instance of a helper based on the supplied configuration.
+@param {corsConfiguration} configuration The CORS configuration
+@returns An object with members described below.
+*/
 module.exports = function (configuration) {
     var isNullAllowed = false,
         headersRegex = /^[a-z0-9\-\,\s]{1,500}$/i,
         originRegexes = buildOriginRegexes(configuration && configuration.origins);
 
     var api = {
+        /**
+        Get appropriate CORS response headers for the supplied options
+        @function getHeaders
+        @param {string} origin The origin of the request
+        @param {string} headers A comma delimited list of allowed headers
+        @param {string} method The HTTP method of the request
+        @returns An object containing the appropriate response headers
+        */
         getHeaders: function(origin, headers, method) {
             var responseHeaders = {};
             if (origin && api.isAllowedOrigin(origin)) {
@@ -28,6 +45,12 @@ module.exports = function (configuration) {
             return responseHeaders;
         },
 
+        /**
+        Determines if the origin is allowed according to the supplied configuration
+        @function isAllowedOrigin
+        @param {string} origin The origin to verify
+        @returns {boolean}
+        */
         isAllowedOrigin: function(origin) {
             // special case 'null' that is sent from browser on local files
             if (isNullAllowed && origin === 'null') {
