@@ -14,7 +14,7 @@ var config = module.exports = function () {
 
 config.data = function () {
     if(process.env.MS_TableConnectionString)
-        return configuration.fromEnvironment().data;
+        return configuration.fromEnvironment({}).data;
 
     return {
         provider: 'sql',

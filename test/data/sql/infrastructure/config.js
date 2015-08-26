@@ -6,7 +6,7 @@
 var configuration = require('../../../../src/configuration');
 
 if(process.env.MS_TableConnectionString)
-    module.exports = configuration.fromEnvironment({ data: {} }).data;
+    module.exports = configuration.fromEnvironment({}).data;
 else
     module.exports = {
         provider: 'sql',
