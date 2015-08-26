@@ -40,8 +40,10 @@ The azure-mobile-apps module is the Nodejs implementation of Azure Mobile Apps
     };
 
 /**
-Creates an instance of the azure-mobile-apps server object for the platform specified in the configuration
+Creates an instance of the azure-mobile-apps server object for the platform specified in the configuration.
+Express 4.x is currently the only supported platform.
 @param {configuration} configuration
+@returns {module:azure-mobile-apps/express}
 */
 module.exports = function (configuration) {
     configuration = configuration || {};
