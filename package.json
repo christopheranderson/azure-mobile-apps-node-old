@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "author": "Microsoft",
   "repository": "Azure/azure-mobile-apps",
+  "license": "SEE LICENSE IN LICENSE.rtf",
   "scripts": {
     "test": "npm run lint & mocha",
     "lint": "jshint src",
