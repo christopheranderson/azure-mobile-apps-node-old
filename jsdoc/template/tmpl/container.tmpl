@@ -136,7 +136,7 @@
 
     <?js
         var methods = self.find({kind: 'function', memberof: isGlobalPage ? {isUndefined: true} : doc.longname});
-        if (methods && methods.length && methods.forEach) {
+        if (methods && methods.length && methods.forEach && !isGlobalPage) {
     ?>
         <h3 class="subsection-title">Methods</h3>
 
