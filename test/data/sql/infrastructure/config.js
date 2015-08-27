@@ -6,7 +6,4 @@
 var configuration = require('../../../../src/configuration'),
     path = require('path');
 
-if(process.env.MS_TableConnectionString)
-    module.exports = configuration.fromEnvironment({}).data;
-else
-    module.exports = require('../../../config').data;
+module.exports = configuration.fromEnvironment(configuration.fromFile(path.resolve(__dirname, '../../../config.js'))).data;

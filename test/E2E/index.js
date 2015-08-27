@@ -3,14 +3,10 @@
 // ----------------------------------------------------------------------------
 var bodyParser = require('body-parser'),
     xmlBodyParser = require('express-xml-bodyparser'),
+    path = require('path'),
     app = require('express')(),
     mobileApps = require('../..'),
-    config;
-
-    if(process.env.MS_TableConnectionString)
-        config = configuration.fromEnvironment({});
-    else
-        config = require('./config');
+    config = configuration.fromEnvironment(configuration.fromFile(path.join(__dirname, 'config.js')));
 
     config.auth = { secret: 'secret' };
 

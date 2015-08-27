@@ -3,18 +3,15 @@
 // ----------------------------------------------------------------------------
 
 // we can expand this to provide different configurations for different environments
-var configuration = require('../../../src/configuration');
+var configuration = require('../../../src/configuration'),
+    path = require('path');
 
-var config = module.exports = function () {
-    return {
-        data: config.data(),
-        basePath: __dirname
-    }
+var api = module.exports = function () {
+    var config = configuration.fromEnvironment(configuration.fromFile(path.resolve(__dirname, '../../config.js')));
+    config.basePath = __dirname;
+    return config;
 }
 
-config.data = function () {
-    if(process.env.MS_TableConnectionString)
-        return configuration.fromEnvironment({}).data;
-
-    return require('../../config').data;
+api.data = function () {
+    return api().data;
 };
