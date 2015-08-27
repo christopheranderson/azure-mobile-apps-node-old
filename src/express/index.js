@@ -3,7 +3,10 @@
 // ----------------------------------------------------------------------------
 /**
 @module azure-mobile-apps/express
-@description Express middleware for working with azure-mobile-apps
+@description
+This module is the entry point for adding an Azure Mobile App to an instance of
+an express web server. It is returned from the root azure-mobile-apps module
+when the configuration passed specifies the express platform.
 */
 var tables = require('./tables'),
     table = require('./tables/table'),

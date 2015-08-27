@@ -3,7 +3,9 @@
 // ----------------------------------------------------------------------------
 /**
 @module azure-mobile-apps/express/tables
-@description Provides functionality for registering tables with azure-mobile-apps.
+@description This module contains functionality for adding tables to an Azure
+Mobile App. It returns middleware that can be attached to an express app with
+some additional functions for registering tables.
 */
 var loader = require('../../configuration/loader'),
     table = require('./table'),
@@ -41,6 +43,7 @@ module.exports = function (configuration) {
     @param {string} path Path to a file or folder containing modules that export either a {@link tableDefinition} or
     {@link module:azure-mobile-apps/express/tables/table table object}.
     The path is relative to configuration.basePath that defaults to the location of your startup module.
+    The table name will be derived from the physical file name.
     */
     middleware.import = function (path) {
         var tables = loader.loadPath(path, configuration.basePath);

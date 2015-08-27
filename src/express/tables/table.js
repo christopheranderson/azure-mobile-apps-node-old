@@ -3,7 +3,7 @@
 // ----------------------------------------------------------------------------
 /**
 @module azure-mobile-apps/express/tables/table
-@description Provides helper functions for configuring a table.
+@description This module provides functionality for configuring features of individual tables with an Azure Mobile App.
 */
 var middlewareFactory = require('./middlewareFactory'),
     executeOperation = require('../middleware/executeOperation'),
@@ -18,8 +18,8 @@ Creates an instance of a table configuration helper.
 module.exports = function (definition) {
     var router = express.Router();
 
-    // calling this creates required middleware as configured
     var table = utilities.assign({
+        // calling this creates required middleware as configured
         createMiddleware: function (name) {
             table.name = name;
             return middlewareFactory(table, router, table.operation);
