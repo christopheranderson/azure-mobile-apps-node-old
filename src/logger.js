@@ -7,7 +7,7 @@ The azure-mobile-apps logging framework.
 */
 var winston = require('winston'),
     logger = new (winston.Logger)();
-    
+
 /**
 Exports an instance of a winston logger with the additional members described below.
 @see {@link https://github.com/winstonjs/winston}
@@ -18,7 +18,7 @@ module.exports = logger;
 Initialises the logger
 @param {loggingConfiguration} config
 */
-module.exports.initialise = function (config) {
+module.exports.configure = function (config) {
     config = config || {};
 
     clearTransports();

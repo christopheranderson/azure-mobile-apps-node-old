@@ -27,11 +27,11 @@ describe('azure-mobile-apps.logger', function () {
             }
         };
 
-        log.initialise(config);
+        log.configure(config);
         expectConfig(config);
     });
 
-    it("sets new config on initialise", function () {
+    it("sets new config on configure", function () {
         var oldConfig = {
             transports: {
                 Console: {
@@ -54,9 +54,9 @@ describe('azure-mobile-apps.logger', function () {
             }
         };
 
-        log.initialise(oldConfig);
+        log.configure(oldConfig);
         expectConfig(oldConfig);
-        log.initialise(newConfig);
+        log.configure(newConfig);
         expectConfig(newConfig);
 
         // test that the old config transport does not exist
@@ -78,7 +78,7 @@ describe('azure-mobile-apps.logger', function () {
             }
         };
 
-        log.initialise(config);
+        log.configure(config);
         expectConfig(config);
 
         log.add(winston.transports.File, {
