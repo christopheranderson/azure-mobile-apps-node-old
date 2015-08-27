@@ -16,11 +16,5 @@ config.data = function () {
     if(process.env.MS_TableConnectionString)
         return configuration.fromEnvironment({}).data;
 
-    return {
-        provider: 'sql',
-        user: 'azure-mobile-apps-test',
-        password: 'Blah1234',
-        server: 'localhost',
-        database: 'azure-mobile-apps-test'
-    };
+    return require('../../config').data;
 };

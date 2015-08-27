@@ -7,23 +7,8 @@ GO
 CREATE DATABASE [azure-mobile-apps-test]
 GO
 
-DROP LOGIN [azure-mobile-apps-test]
-GO
-
-/* For security reasons the login is created disabled and with a random password. */
-/****** Object:  Login [azure-mobile-apps-test]    Script Date: 6/23/2015 3:37:06 PM ******/
-CREATE LOGIN [azure-mobile-apps-test] WITH PASSWORD=N'Blah1234', DEFAULT_DATABASE=[azure-mobile-apps-test], DEFAULT_LANGUAGE=[us_english], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF
-GO
-
 USE [azure-mobile-apps-test]
 GO
-
-/****** Object:  User [azure-mobile-apps-test]    Script Date: 6/23/2015 3:36:29 PM ******/
-CREATE USER [azure-mobile-apps-test] FOR LOGIN [azure-mobile-apps-test] WITH DEFAULT_SCHEMA=[dbo]
-GO
-sys.sp_addrolemember @rolename = N'db_owner', @membername = N'azure-mobile-apps-test'
-GO
-/****** Object:  Table [dbo].[integration]    Script Date: 6/23/2015 3:36:30 PM ******/
 
 SET ANSI_NULLS ON
 GO

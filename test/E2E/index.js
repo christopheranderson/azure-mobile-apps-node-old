@@ -4,19 +4,15 @@
 var bodyParser = require('body-parser'),
     xmlBodyParser = require('express-xml-bodyparser'),
     app = require('express')(),
-    mobileApp = require('../..')({
-        data: {
-            provider: 'sql',
-            user: 'azure-mobile-apps-test',
-            password: 'Blah1234',
-            server: 'localhost',
-            database: 'e2e'
-        },
-        auth: {
-            // secret: 'c8e2744cf0a72c4b5cee43d83bb98d5fb6e8303e9ae5d6ba036552fb20c2a172'
-            secret: 'secret'
-        }
-    });
+    mobileApps = require('../..'),
+    config;
+
+    if(process.env.MS_TableConnectionString)
+        config = configuration.fromEnvironment({});
+    else
+        config = require('./config');
+
+    config.auth = { secret: 'secret' };
 
 mobileApp.tables.add('authenticated', { authorise: true });
 mobileApp.tables.add('blog_comments', { columns: { postId: 'string', commentText: 'string', name: 'string', test: 'number' } });
