@@ -4,29 +4,41 @@
 var statements = require('./statements'),
     execute = require('./execute'),
     dynamicSchema = require('./dynamicSchema'),
-    log = require('../../logger');
+    log = require('../../logger'),
+    assert = require('../../utilities/assert').argument;
 
 module.exports = function (configuration) {
+    assert(configuration.server, 'A database server was not specified.');
+    assert(configuration.user, 'A database user was not specified.');
+    assert(configuration.password, 'A password for the database user was not specified');
+
     log.debug('Using SQL Server data source, server: ' + configuration.server + ':' + (configuration.port || 'default') + ', user: ' + configuration.user);
     setEncryption();
 
     var tableAccess = function (table) {
+        assert(table, 'A table was not specified');
+
         // default is on...
         if (table.dynamicSchema === undefined || table.dynamicSchema && !configuration.dynamicSchema === false)
             return {
                 read: function (query) {
+                    assert(query, 'A query was not provided');
                     return dynamicSchema(configuration).read(table, statements.read(query, table)).then(handleReadResult);
                 },
                 update: function (item) {
+                    assert(item, 'An item to update was not provided');
                     return dynamicSchema(configuration).execute(table, statements.update(table, item), item).then(returnSingleResultWithConcurrencyCheck);
                 },
                 insert: function (item) {
+                    assert(item, 'An item to insert was not provided');
                     return dynamicSchema(configuration).execute(table, statements.insert(table, item), item).then(returnSingleResult);
                 },
                 delete: function (id, version) {
+                    assert(id, 'The ID of an item to delete was not provided');
                     return execute(configuration, statements.delete(table, id, version)).then(returnDeleteResults);
                 },
                 undelete: function (id, version) {
+                    assert(id, 'The ID of an item to undelete was not provided');
                     return execute(configuration, statements.undelete(table, id, version)).then(returnSingleResultWithConcurrencyCheck);
                 },
                 truncate: function () {
@@ -36,18 +48,23 @@ module.exports = function (configuration) {
         else
             return {
                 read: function (query) {
+                    assert(query, 'A query was not provided');
                     return execute(configuration, statements.read(query, table)).then(handleReadResult);
                 },
                 update: function (item) {
+                    assert(item, 'An item to update was not provided');
                     return execute(configuration, statements.update(table, item)).then(returnSingleResultWithConcurrencyCheck);
                 },
                 insert: function (item) {
+                    assert(item, 'An item to insert was not provided');
                     return execute(configuration, statements.insert(table, item)).then(returnSingleResult);
                 },
                 delete: function (id, version) {
+                    assert(id, 'The ID of an item to delete was not provided');
                     return execute(configuration, statements.delete(table, id, version)).then(returnDeleteResults);
                 },
                 undelete: function (id, version) {
+                    assert(id, 'The ID of an item to undelete was not provided');
                     return execute(configuration, statements.undelete(table, id, version)).then(returnSingleResultWithConcurrencyCheck);
                 },
                 truncate: function () {
@@ -58,6 +75,7 @@ module.exports = function (configuration) {
 
     // expose a method to allow direct execution if SQL queries
     tableAccess.execute = function (statement) {
+        assert(statement, 'A SQL statement was not provided');
         return execute(configuration, statement);
     };
 

@@ -15,7 +15,8 @@ var tables = require('./tables'),
     handleError = require('./middleware/handleError'),
     crossOrigin = require('./middleware/crossOrigin'),
     version = require('./middleware/version'),
-    log = require('../logger');
+    log = require('../logger'),
+    assert = require('../utilities/assert').argument;
 
 /**
 Creates an instance of the azure-mobile-apps server object for express 4.x
@@ -59,6 +60,7 @@ module.exports = function (configuration) {
         @param {Express} app Express application to attach to
         */
         attach: function (app) {
+            assert(app, 'An express app to attach to was not provided');
             log.debug('Attaching to express app');
             app.use(versionMiddleware);
             app.use(createContextMiddleware);

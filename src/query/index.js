@@ -5,7 +5,8 @@
 @module azure-mobile-apps/query
 @description Functionality for creating {@link https://github.com/Azure/queryjs query.js} objects
 */
-var Query = require('query.js').Query;
+var Query = require('query.js').Query,
+    assert = require('../utilities/assert').argument;
 
 module.exports = {
     /**
@@ -13,6 +14,7 @@ module.exports = {
     @param {string} table - Name of the table to query
     */
     create: function (table) {
+        assert(table, 'A table name was not specified');
         return new Query(table);
     },
     /**

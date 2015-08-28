@@ -9,7 +9,8 @@ some additional functions for registering tables.
 */
 var loader = require('../../configuration/loader'),
     table = require('./table'),
-    tableRouter = require('./tableRouter');
+    tableRouter = require('./tableRouter'),
+    assert = require('../../utilities/assert').argument;
 
 /**
 Create an instance of an express middleware function for routing and handling table requests.
@@ -31,6 +32,7 @@ module.exports = function (configuration) {
     @param {tableDefinition|module:azure-mobile-apps/express/tables/table} definition - The definition for the table.
     */
     middleware.add = function (name, definition) {
+        assert(name, 'A table name was not specified');
         if(!definition || !definition.createMiddleware)
             definition = table(definition);
         configuration.tables[name] = definition;
@@ -46,6 +48,7 @@ module.exports = function (configuration) {
     The table name will be derived from the physical file name.
     */
     middleware.import = function (path) {
+        assert(path, 'A path to table configuration file(s) was not specified');
         var tables = loader.loadPath(path, configuration.basePath);
         Object.keys(tables).forEach(function (tableName) {
             var definition = tables[tableName];
