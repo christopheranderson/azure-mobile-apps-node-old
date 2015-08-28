@@ -104,7 +104,7 @@ describe('azure-mobile-apps.express.integration.tables.dynamicSchema', function 
             .send({ id: '1', string: 'one' })
             .then(function (inserted) {
                 updatedAt = inserted.body.__updatedAt;
-                return promises.sleep(10);
+                return promises.sleep(20);
             })
             .then(function () {
                 return supertest(app)

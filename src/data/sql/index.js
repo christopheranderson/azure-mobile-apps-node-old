@@ -12,7 +12,7 @@ module.exports = function (configuration) {
 
     var tableAccess = function (table) {
         // default is on...
-        if (table.dynamicSchema === undefined || table.dynamicSchema)
+        if (table.dynamicSchema === undefined || table.dynamicSchema && !configuration.dynamicSchema === false)
             return {
                 read: function (query) {
                     return dynamicSchema(configuration).read(table, statements.read(query, table)).then(handleReadResult);

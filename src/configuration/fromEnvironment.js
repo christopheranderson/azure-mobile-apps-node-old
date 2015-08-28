@@ -37,6 +37,12 @@ module.exports = function (configuration) {
                 });
                 break;
 
+            case 'ms_debugmode':
+                configuration.debug = parseBoolean(process.env[key]);
+
+            case 'ms_dynamicschema':
+                configuration.data.dynamicSchema = parseBoolean(process.env[key]);
+
             // case 'customconnstr_ms_notificationhubconnectionstring':
             // case 'ms_notificationhubconnectionstring':
             //     break;
@@ -48,3 +54,7 @@ module.exports = function (configuration) {
 
     return configuration;
 };
+
+function parseBoolean(value) {
+    return value === 'true' || value === '1';
+}

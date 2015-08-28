@@ -8,6 +8,7 @@ see {@link configuration global configuration}.
 @module azure-mobile-apps/configuration
 @param {string} MS_MobileAppName Name of the mobile app
 @param {string} MS_MobileLogLevel Minimum log level of messages to log (debug, info, warn, error)
+@param {boolean} MS_DebugMode Enables or disables debug mode
 @param {string} MS_TableConnectionString Connection string to use to connect to SQL Server
 @param {boolean} MS_DynamicSchema Disables dynamic schema for tables when set to false
 @param {string} EMA_RuntimeUrl Authentication gateway URL
