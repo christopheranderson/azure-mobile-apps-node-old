@@ -41,9 +41,9 @@ describe('azure-mobile-apps.query.parseOData', function () {
     it("numeric literal parsing", function () {
         var testCases = [
             // long literal
-            { expr: '1234', value: 1234 },
-            { expr: '1234L', value: 1234 },
-            { expr: '1234l', value: 1234 },
+            { expr: '1234', value: 1234, type: 'Constant' },
+            { expr: '1234L', value: 1234, type: 'Constant' },
+            { expr: '1234l', value: 1234, type: 'Constant' },
 
             // decimal literal
             { expr: '1234M', value: 1234 },
@@ -64,7 +64,7 @@ describe('azure-mobile-apps.query.parseOData', function () {
         for (var i = 0; i < testCases.length; i++) {
             var testCase = testCases[i];
             var expr = parse(testCase.expr);
-            equal(expr.expressionType, 'Constant');
+            equal(expr.expressionType, testCase.type || 'FloatConstant');
             equal(expr.value, testCase.value);
         }
     });
