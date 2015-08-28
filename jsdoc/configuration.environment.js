@@ -3,8 +3,8 @@
 // ----------------------------------------------------------------------------
 /**
 Azure Mobile Apps can be configured by providing values for specifiec environment
-variables. These variables are described below. For configuration using Javascript,
-see {@link configuration global configuration}.
+variables. These variables are described below. Variable names are not case sensitive.
+For configuration using Javascript, see {@link configuration global configuration}.
 @module azure-mobile-apps/configuration
 @param {string} MS_MobileAppName Name of the mobile app
 @param {string} MS_MobileLogLevel Minimum log level of messages to log (debug, info, warn, error)
