@@ -37,7 +37,7 @@ module.exports = function (configuration) {
                 });
                 break;
 
-            // case 'customeconnstr_ms_notificationhubconnectionstring':
+            // case 'customconnstr_ms_notificationhubconnectionstring':
             // case 'ms_notificationhubconnectionstring':
             //     break;
             //
